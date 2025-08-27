@@ -15,6 +15,8 @@ interface Section {
   clickOnTitle: boolean;
   tasks: Task[];
   newTask: string; // Add this for input binding
+  collapsed?: boolean;
+  color: string;
 }
 
 @Component({
@@ -25,14 +27,34 @@ interface Section {
   styleUrl: './app.scss',
 })
 export class App {
+  // გასაკეთებელი დავალებები:
+  // 1). სექციის ზომის გასწორება, რომ არ იყოს მთლიან სიმაღლეზე
+  // 2). სექციას დავამატო ფუნცქია რომ იხურებოდეს, ანუ პატარავდებოდეს ზომაში
+  // 3). შემეძლოს სექციის ფერის შეცვლა
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   tasks: Task[] = [];
   todayTasks: Task[] = [];
   newTask: string = '';
+  loader = signal<boolean>(false);
+  todayTitle: string = 'Today';
+  todayExist: boolean = true;
+  todayClickOnTitle: boolean = false;
+  todayCollapsed = signal<boolean>(false);
+  sec1Color: string = 'rgb(19, 17, 60)'; // Default color for sec-1
+  sec2Color: string =
+    'linear-gradient(to bottom, rgb(77, 17, 27), rgb(208, 79, 101))';
+  secTodayColor: string = 'rgb(19, 17, 60)';
 
   ngOnInit() {
     const saved = localStorage.getItem('tasks');
     const savedToday = localStorage.getItem('todayTasks');
     const savedSections = localStorage.getItem('sections');
+    const savedTodayTitle = localStorage.getItem('todayTitle');
+    const savedTodayExist = localStorage.getItem('todayExist');
+    const savedSec1Color = localStorage.getItem('sec1Color');
+    const savedSec2Color = localStorage.getItem('sec2Color');
+    const savedSecTodayColor = localStorage.getItem('secTodayColor');
 
     if (saved) {
       this.tasks = JSON.parse(saved);
@@ -45,12 +67,44 @@ export class App {
     if (savedSections) {
       this.newSectionArray.set(JSON.parse(savedSections));
     }
+
+    if (savedTodayTitle) {
+      this.todayTitle = JSON.parse(savedTodayTitle);
+    }
+
+    if (savedTodayExist) {
+      this.todayExist = JSON.parse(savedTodayExist);
+    }
+
+    if (savedSec1Color) {
+      this.sec1Color = JSON.parse(savedSec1Color);
+    }
+
+    if (savedSec2Color) {
+      this.sec2Color = JSON.parse(savedSec2Color);
+    }
+
+    if (savedSecTodayColor) {
+      this.secTodayColor = JSON.parse(savedSecTodayColor);
+    }
+
+    if (savedSections) {
+      const sections = JSON.parse(savedSections);
+      this.newSectionArray.set(sections);
+      // Initialize the showSectionColors array for each loaded section
+      this.showSectionColors = sections.map(() => false);
+    }
   }
 
   private saveTasksInStorage() {
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
     localStorage.setItem('todayTasks', JSON.stringify(this.todayTasks));
     localStorage.setItem('sections', JSON.stringify(this.newSectionArray()));
+    localStorage.setItem('todayTitle', JSON.stringify(this.todayTitle));
+    localStorage.setItem('todayExist', JSON.stringify(this.todayExist));
+    localStorage.setItem('sec1Color', JSON.stringify(this.sec1Color));
+    localStorage.setItem('sec2Color', JSON.stringify(this.sec2Color));
+    localStorage.setItem('secTodayColor', JSON.stringify(this.secTodayColor));
   }
 
   addTask(): void {
@@ -417,6 +471,37 @@ export class App {
     this.saveTasksInStorage();
   }
 
+  // Today section title edit/delete controls
+  changeTodayTitle() {
+    this.todayClickOnTitle = true;
+    this.saveTasksInStorage();
+  }
+
+  saveTodayTitle() {
+    const typedTitle = this.todayTitle.trim();
+    this.todayTitle = typedTitle || 'Today';
+    this.todayClickOnTitle = false;
+    this.saveTasksInStorage();
+  }
+
+  deleteTodaySection() {
+    this.todayExist = false;
+    this.saveTasksInStorage();
+  }
+
+  // Collapse controls
+  toggleTodayCollapsed() {
+    this.todayCollapsed.set(!this.todayCollapsed());
+  }
+
+  toggleSectionCollapsed(sectionIndex: number) {
+    const sections = this.newSectionArray();
+    if (!sections[sectionIndex]) return;
+    sections[sectionIndex].collapsed = !sections[sectionIndex].collapsed;
+    this.newSectionArray.set([...sections]);
+    this.saveTasksInStorage();
+  }
+
   /////////////////////////////////////////////////////////////////////////////////
   newSectionArray = signal<Section[]>([]);
   sectionTitle = signal<string>('New Section');
@@ -427,6 +512,8 @@ export class App {
 
     this.newSection.set(true);
 
+    this.loader.set(true);
+
     setTimeout(() => {
       const sections = this.newSectionArray();
       sections.push({
@@ -435,10 +522,14 @@ export class App {
         clickOnTitle: false,
         tasks: [],
         newTask: '', // Initialize newTask
+        collapsed: false,
+        color: 'rgb(19, 17, 60)',
       });
       this.newSectionArray.set([...sections]);
+      this.showSectionColors[sections.length - 1] = false;
       this.newSection.set(false);
-    }, 1000);
+      this.loader.set(false);
+    }, 3000);
 
     this.saveTasksInStorage();
   }
@@ -523,5 +614,61 @@ export class App {
   onDragStartFromSection(taskIndex: number, sectionIndex: number) {
     this.draggedTaskIndex = taskIndex;
     this.draggedFrom = `section-${sectionIndex}`;
+  }
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  changeColors = signal<boolean>(false);
+
+  showColors() {
+    this.changeColors.set(!this.changeColors());
+  }
+
+  changeSec1Color(color: string) {
+    this.sec1Color = color;
+    this.changeColors.set(false);
+    this.saveTasksInStorage();
+  }
+
+  changeListsColor = signal<boolean>(false);
+
+  showColorsLista() {
+    this.changeListsColor.set(!this.changeListsColor());
+  }
+
+  changeSec2Color(color: string) {
+    this.sec2Color = color;
+    this.changeListsColor.set(false);
+    this.saveTasksInStorage();
+  }
+
+  changeTodayColor = signal<boolean>(false);
+
+  showColorsToday() {
+    this.changeTodayColor.set(!this.changeTodayColor());
+  }
+
+  changeSecTodayColor(color: string) {
+    this.secTodayColor = color;
+    this.changeTodayColor.set(false);
+    this.saveTasksInStorage();
+  }
+
+  /////////////////////////////////////////////////////////////////////////////
+  showSectionColors: boolean[] = [];
+
+  // Method to show color picker for a specific section
+  showSectionColorPicker(index: number) {
+    this.showSectionColors[index] = !this.showSectionColors[index];
+  }
+
+  // Method to change the color of a specific section
+  changeSectionColor(index: number, color: string) {
+    const sections = this.newSectionArray();
+    if (sections[index]) {
+      sections[index].color = color;
+      this.newSectionArray.set([...sections]);
+      this.showSectionColors[index] = false;
+      this.saveTasksInStorage();
+    }
   }
 }

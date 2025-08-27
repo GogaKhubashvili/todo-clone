@@ -1,42 +1,286 @@
+.loader {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  z-index: 100;
+
+  .spin-1,
+  .spin-2,
+  .spin-3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+
+    border: 10px solid crimson;
+    border-radius: 50%;
+    filter: drop-shadow(0px 0px 6px rgb(220, 20, 60));
+  }
+
+  .spin-1 {
+    width: 100px;
+    height: 100px;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    animation: spin 10s linear infinite;
+  }
+
+  .spin-2 {
+    width: 70px;
+    height: 70px;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    animation: spin 5s linear infinite;
+  }
+
+  .spin-3 {
+    width: 40px;
+    height: 40px;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    animation: spin 2.5s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// Main container
 main {
-  // background-color: wheat;
   display: flex;
-  // grid-template-columns: 1fr 1fr;
-  // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   width: 100%;
   height: 100%;
   gap: 10px;
   padding: 20px;
-  // margin: 20px;
 
+  // Left section (main tasks)
   .sec-1 {
     width: 300px;
+    position: relative;
+    padding-bottom: 10px;
   }
 
+  // Common section styles
   section {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: rgb(19, 17, 60);
     border-radius: 10px;
-    // padding: 10px;
     border: 2px solid black;
     gap: 10px;
     transition: all 0.2s ease-in-out;
+    overflow-y: auto;
 
+    .paint {
+      position: absolute;
+      bottom: 0px;
+      right: 5px;
+      padding: 5px;
+      border: none;
+      border-radius: 100px;
+      background-color: transparent;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      transition: all 0.15s ease-in-out;
+      background-color: #282e3385;
+      z-index: 101;
+
+      &:hover {
+        background-color: #282e33;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .color-change {
+      position: absolute;
+      // background-color: #50575f;
+      // width: 220px;
+      // height: 150px;
+      // top: 0;
+      bottom: 1px;
+      // left: 0;
+      right: 40px;
+      // border: 1px solid tomato;
+      margin: auto;
+      border-radius: 5px;
+
+      z-index: 99;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+
+      .colors {
+        // display: grid;
+        // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        // align-items: center;
+        // justify-content: center;
+        width: 200px;
+        height: 70px;
+        gap: 10px;
+        position: relative;
+        // background-color: #282e33;
+
+        .single-color {
+          position: absolute;
+          // top: 0;
+          // left: 0;
+          cursor: pointer;
+          width: 30px;
+          height: 30px;
+          // background-color: tomato;
+          // border: 1px solid black;
+          outline: 2px solid white;
+          border-radius: 100px;
+          transition: all 0.15s ease-in-out;
+          animation: colorVisible 0.15s ease-in-out forwards;
+          transform: scale(0);
+
+          &:hover {
+            outline: 2px solid rgb(152, 238, 90);
+          }
+        }
+
+        .green {
+          background-color: rgb(4, 174, 103);
+          bottom: 45px;
+          right: 165px;
+          animation-delay: 0.2s;
+        }
+
+        .yellow {
+          background-color: rgb(195, 189, 17);
+          bottom: 5px;
+          right: 5px;
+        }
+
+        .orange {
+          background-color: rgb(201, 129, 6);
+          right: 45px;
+          bottom: 5px;
+          animation-delay: 0.05s;
+        }
+
+        .red {
+          background-color: rgb(148, 17, 7);
+          bottom: 5px;
+          right: 165px;
+          animation-delay: 0.2s;
+        }
+
+        .purple {
+          background-color: rgb(49, 5, 72);
+          right: 5px;
+          bottom: 45px;
+        }
+
+        .blue {
+          background-color: rgb(19, 17, 60);
+          right: 45px;
+          bottom: 45px;
+          animation-delay: 0.05s;
+        }
+
+        .teal {
+          background-color: teal;
+          bottom: 5px;
+          right: 85px;
+          animation-delay: 0.1s;
+        }
+
+        .cyan {
+          background-color: cyan;
+          bottom: 45px;
+          right: 85px;
+          animation-delay: 0.1s;
+        }
+
+        .pink {
+          background-color: rgb(226, 159, 170);
+          right: 125px;
+          bottom: 45px;
+          animation-delay: 0.15s;
+        }
+
+        .black {
+          background-color: gray;
+          bottom: 5px;
+          right: 125px;
+          animation-delay: 0.15s;
+        }
+      }
+    }
+
+    // Hide scrollbar
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
+    // Section title/form
     .title {
-      background-color: rgb(12, 10, 48);
+      background-color: rgba(0, 0, 0, 0.4);
       border-bottom: 2px solid black;
       width: 100%;
       height: 50px;
       display: flex;
       align-items: center;
       padding: 10px;
-      // justify-content: center;
+      gap: 2px;
+      justify-content: center;
+      // background-color: #ff4444;
+
+      input {
+        flex: 1;
+        // width: 75%;
+        height: 30px;
+        padding: 5px;
+        background-color: rgb(33, 29, 29);
+        border: 2px solid black;
+        border-radius: 5px;
+        outline: none;
+        // background-color: #ff4444;
+      }
+
+      button {
+        min-width: 63px;
+        cursor: pointer;
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: rgb(33, 29, 29);
+        padding: 5px 0;
+        transition: all 0.15s ease-in-out;
+
+        &:hover {
+          background-color: white;
+          color: black;
+        }
+      }
     }
 
+    // Section header (for custom sections)
     .section-header {
-      background-color: rgb(12, 10, 48);
+      background-color: rgba(0, 0, 0, 0.4);
       border-bottom: 2px solid black;
       width: 100%;
       height: 50px;
@@ -54,7 +298,17 @@ main {
         flex: 1;
       }
 
-      .delete-section {
+      .size {
+        margin-right: 3px;
+
+        img {
+          transform: rotateZ(45deg);
+        }
+      }
+
+      .delete-section,
+      .hide,
+      .zoom {
         cursor: pointer;
         border: 2px solid black;
         border-radius: 5px;
@@ -79,47 +333,11 @@ main {
       }
     }
 
-    &::-webkit-scrollbar {
-      width: 0;
-    }
-  }
-
-  section {
-    overflow-y: scroll;
-
-    .title {
-      input {
-        width: 210px;
-        height: 30px;
-        //   color: black;
-        padding: 5px;
-        background-color: rgb(33, 29, 29);
-        border: 2px solid black;
-        border-radius: 5px;
-        outline: none;
-      }
-
-      button {
-        cursor: pointer;
-        border: 2px solid black;
-        border-radius: 5px;
-        background-color: rgb(33, 29, 29);
-        padding: 5px;
-        transition: all 0.15s ease-in-out;
-        margin-top: 5px;
-
-        &:hover {
-          background-color: white;
-          color: black;
-        }
-      }
-    }
-
+    // Task items
     .task-div {
       display: flex;
       align-items: center;
       min-height: 34px;
-      // justify-content: center;
       gap: 10px;
       cursor: grab;
       position: relative;
@@ -128,34 +346,22 @@ main {
       width: 90%;
       border-radius: 5px;
       box-shadow: 2px 2px rgba(255, 255, 255, 0.556);
-      // background-color: aqua;
       transition: all 0.15s ease-in-out;
 
       &:active {
         cursor: grabbing;
       }
 
-      // &:hover {
-      //   // .circle {
-      //   //   opacity: 1;
-      //   // }
-
-      //   // .task {
-      //   //   border: 2px solid white;
-      //   //   padding: 6px 6px 6px 26px;
-      //   // }
-      // }
-
+      // Action buttons (delete, edit, save)
       .delete,
       .edit,
       .save {
         position: absolute;
         right: 2px;
         border: none;
-        padding: 0;
+        padding: 3px;
         background-color: transparent;
         cursor: pointer;
-        padding: 3px;
         border-radius: 100px;
         display: flex;
         align-items: center;
@@ -175,6 +381,7 @@ main {
         right: 30px;
       }
 
+      // Circle checkbox
       .circle {
         cursor: pointer;
         position: absolute;
@@ -182,10 +389,8 @@ main {
         height: 15px;
         background-color: transparent;
         left: 10px;
-        // top: 9px;
         border-radius: 100px;
         border: 1px solid white;
-        // opacity: 0;
         transition: all 0.2s ease-in-out;
         display: flex;
         align-items: center;
@@ -197,6 +402,7 @@ main {
         }
       }
 
+      // Task content
       .task {
         max-width: 85%;
         height: 100%;
@@ -205,11 +411,8 @@ main {
         overflow-wrap: break-word;
         hyphens: manual;
         position: relative;
-        // min-width: 90%;
-        // background-color: tomato;
 
         .task-edit {
-          // background-color: tomato;
           width: 108%;
           height: 100%;
           border: none;
@@ -222,34 +425,331 @@ main {
     }
   }
 
+  // Right section (lists container)
   .lists {
     border: 2px solid black;
     border-radius: 10px;
-    padding: 60px 10px 0 10px;
     flex: 1;
     display: flex;
+    flex-direction: column;
     align-items: start;
-    // justify-content: center;
     gap: 10px;
-    overflow-x: scroll;
+    overflow-y: hidden;
     position: relative;
-    background-color: rgb(115, 31, 45);
-    background: linear-gradient(to bottom, rgb(77, 17, 27), rgb(208, 79, 101));
+    // background: linear-gradient(to bottom, rgb(77, 17, 27), rgb(208, 79, 101));
     transition: all 0.2s ease-in-out;
 
-    .header {
-      position: fixed;
-      padding: 5px 10px;
-      height: 50px;
-      top: 22px;
-      // left: 0;
-      // right: 0;
-      // background-color: rgb(77, 17, 27);
-      font-size: 30px;
-      font-weight: bold;
-      // border-bottom: 2px solid black;
+    .paint {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      padding: 5px;
+      border: none;
+      border-radius: 100px;
+      background-color: transparent;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      transition: all 0.15s ease-in-out;
+      background-color: #282e3385;
+      z-index: 101;
+
+      &:hover {
+        background-color: #282e33;
+      }
+
+      img {
+        width: 100%;
+      }
     }
 
+    .color-change {
+      position: absolute;
+      // background-color: #50575f;
+      // width: 220px;
+      // height: 150px;
+      // top: 0;
+      bottom: 1px;
+      // left: 0;
+      right: 40px;
+      // border: 1px solid tomato;
+      margin: auto;
+      border-radius: 5px;
+
+      z-index: 99;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+
+      .colors {
+        // display: grid;
+        // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        // align-items: center;
+        // justify-content: center;
+        width: 200px;
+        height: 70px;
+        gap: 10px;
+        position: relative;
+        // background-color: #282e33;
+
+        .single-color {
+          position: absolute;
+          // top: 0;
+          // left: 0;
+          cursor: pointer;
+          width: 30px;
+          height: 30px;
+          // background-color: tomato;
+          // border: 1px solid black;
+          outline: 2px solid white;
+          border-radius: 100px;
+          transition: all 0.15s ease-in-out;
+          animation: colorVisible 0.15s ease-in-out forwards;
+          transform: scale(0);
+
+          &:hover {
+            outline: 2px solid rgb(152, 238, 90);
+          }
+        }
+
+        .green {
+          background-color: rgb(4, 174, 103);
+          bottom: 45px;
+          right: 165px;
+          animation-delay: 0.2s;
+        }
+
+        .yellow {
+          background-color: rgb(195, 189, 17);
+          bottom: 5px;
+          right: 5px;
+        }
+
+        .orange {
+          background-color: rgb(201, 129, 6);
+          right: 45px;
+          bottom: 5px;
+          animation-delay: 0.05s;
+        }
+
+        .red {
+          background-color: rgb(148, 17, 7);
+          bottom: 5px;
+          right: 165px;
+          animation-delay: 0.2s;
+        }
+
+        .purple {
+          background-color: rgb(49, 5, 72);
+          right: 5px;
+          bottom: 45px;
+        }
+
+        .blue {
+          background-color: rgb(19, 17, 60);
+          right: 45px;
+          bottom: 45px;
+          animation-delay: 0.05s;
+        }
+
+        .teal {
+          background-color: teal;
+          bottom: 5px;
+          right: 85px;
+          animation-delay: 0.1s;
+        }
+
+        .cyan {
+          background-color: cyan;
+          bottom: 45px;
+          right: 85px;
+          animation-delay: 0.1s;
+        }
+
+        .pink {
+          background-color: rgb(226, 159, 170);
+          right: 125px;
+          bottom: 45px;
+          animation-delay: 0.15s;
+        }
+
+        .black {
+          background-color: gray;
+          bottom: 5px;
+          right: 125px;
+          animation-delay: 0.15s;
+        }
+      }
+    }
+
+    // Hide scrollbar
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
+    .hidden-section {
+      cursor: pointer;
+      width: 50px;
+      // height: 120px;
+      gap: 0px;
+      // padding: 10px 0;
+      height: auto;
+      min-height: 170px;
+      background-color: rgb(19, 17, 60);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      border-radius: 10px;
+      border: 2px solid black;
+      transition: all 0.15s ease-in-out;
+
+      &:hover {
+        background-color: rgb(39, 36, 101);
+      }
+
+      .title-text,
+      .tasks-num {
+        transform: rotateZ(90deg);
+        font-weight: bold;
+        // background-color: #ff4444;
+      }
+
+      .zoom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+
+        img {
+          width: 20px;
+          transform: rotateZ(45deg);
+        }
+      }
+    }
+
+    // Header
+    .header {
+      width: 100%;
+      padding: 5px 10px;
+      background-color: rgba(0, 0, 0, 0.4);
+      font-size: 30px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 55px;
+      border-bottom: 2px solid black;
+      color: white;
+
+      // Add section button
+      .add-section {
+        position: relative;
+        width: 82px;
+        height: 32px;
+        border-radius: 100px;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all 0.15s ease-in-out;
+
+        &:hover {
+          background-color: #282e33;
+
+          .add {
+            background-color: #282e33;
+          }
+        }
+
+        img {
+          position: absolute;
+        }
+
+        .settings {
+          width: 32px;
+        }
+
+        .add {
+          width: 16px;
+          top: 0;
+          bottom: 0;
+          left: 8px;
+          margin: auto;
+          background-color: rgba(0, 0, 0);
+          border-radius: 100%;
+          transition: all 0.15s ease-in-out;
+        }
+
+        .settings-spin {
+          animation: spinSettings 1s ease-in-out;
+        }
+
+        .add-spin {
+          animation: spinAdd 1s ease-in-out;
+        }
+
+        .tooltip {
+          position: absolute;
+          font-size: 10px;
+          bottom: 0px;
+          top: 0;
+          left: 30px;
+          right: 0px;
+          padding: 5px;
+          border-radius: 10px;
+          text-align: center;
+        }
+      }
+    }
+
+    // Main content area
+    .main-div {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      overflow-x: scroll;
+      padding: 0 10px;
+
+      // Custom scrollbar
+      &::-webkit-scrollbar {
+        background-color: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #282e33c7;
+        border-radius: 100px;
+      }
+
+      // Section containers
+      .sec-2 {
+        min-width: 250px;
+        max-width: 300px;
+        min-height: 110px;
+        height: auto;
+        align-self: flex-start;
+        flex: 0 0 auto;
+        padding-bottom: 10px;
+        // background-color: antiquewhite;
+        // width: 50px;
+        padding-bottom: 50px;
+        position: relative;
+        overflow: visible;
+
+        .title-form {
+          input {
+            width: 97%;
+          }
+        }
+      }
+    }
+
+    // Custom scrollbar for lists container
     &::-webkit-scrollbar {
       background-color: transparent;
     }
@@ -257,89 +757,36 @@ main {
     &::-webkit-scrollbar-thumb {
       background-color: #282e33c7;
       border-radius: 100px;
+      display: none;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 700px) {
+  main {
+    flex-direction: column;
+
+    .sec-1 {
+      width: 100%;
+      height: 300px;
+      min-height: 200px;
     }
 
-    .sec-2 {
-      // background-color: #282e33;
-      min-width: 250px;
-      max-width: 300px;
-      min-height: 100px;
-      max-height: 100%;
-      flex: 1;
-      padding-bottom: 10px;
-
-      .title-form {
-        input {
-          width: 97%;
-        }
-      }
+    .lists {
+      min-height: 200px;
     }
+  }
+}
 
-    .add-section {
-      position: fixed;
-      // background-color: tomato;
-      width: 82px;
-      height: 32px;
-      // position: relative;
-      border-radius: 100px;
-      cursor: pointer;
-      overflow: hidden;
-      top: 30px;
-      right: 25px;
-      transition: all 0.15s ease-in-out;
+// Animations
+@keyframes colorVisible {
+  0% {
+    transform: scale(0);
+  }
 
-      &:hover {
-        background-color: #282e33;
-
-        .add {
-          background-color: #282e33;
-        }
-      }
-
-      img {
-        position: absolute;
-      }
-
-      .settings {
-        width: 32px;
-      }
-
-      .add {
-        width: 16px;
-        top: 0;
-        bottom: 0;
-        left: 8px;
-        // right: 0;
-        margin: auto;
-        background-color: rgb(77, 17, 27);
-        border-radius: 100%;
-        transition: all 0.15s ease-in-out;
-      }
-
-      .settings-spin {
-        animation: spinSettings 1s ease-in-out;
-      }
-
-      .add-spin {
-        animation: spinAdd 1s ease-in-out;
-      }
-
-      .tooltip {
-        // width: 50px;
-        position: absolute;
-        // background-color: tomato;
-        font-size: 10px;
-        bottom: 0px;
-        top: 0;
-        left: 30px;
-        right: 0px;
-        // background-color: rgb(66, 73, 79);
-        padding: 5px;
-        border-radius: 10px;
-        text-align: center;
-        // display: none;
-      }
-    }
+  100% {
+    transform: scale(1);
   }
 }
 
@@ -347,7 +794,6 @@ main {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
@@ -357,12 +803,12 @@ main {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(-360deg);
   }
 }
 
+// Undo notification
 .undo {
   width: 250px;
   height: 150px;
@@ -398,39 +844,31 @@ main {
   .close,
   .info {
     cursor: pointer;
+    position: absolute;
+    width: 20px;
   }
 
   .info {
-    position: absolute;
     top: 10px;
     left: 10px;
-    width: 20px;
   }
 
   .close {
-    position: absolute;
-    width: 20px;
     right: 10px;
     top: 10px;
   }
-
-  // &.animate {
-  //   animation: move 0.4s ease-in-out forwards;
-  // }
 }
+
 @keyframes move {
   0% {
     transform: translateX(-300px);
   }
-
   8% {
     transform: translateX(0);
   }
-
   92% {
     transform: translateX(0);
   }
-
   100% {
     transform: translateX(-300px);
   }
