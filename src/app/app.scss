@@ -1,520 +1,18 @@
-/* Main container styles from original file */
-main {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  gap: 10px;
-  padding: 20px;
-  color: white;
-
-  .sec-1 {
-    width: 300px;
-    position: relative;
-    padding-bottom: 10px;
-  }
-
-  section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgb(19, 17, 60);
-    border-radius: 10px;
-    border: 2px solid black;
-    gap: 10px;
-    transition: all 0.2s ease-in-out;
-    overflow-y: auto;
-  }
-
-  .paint {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    padding: 5px;
-    border: none;
-    border-radius: 100px;
-    background-color: transparent;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    transition: all 0.15s ease-in-out;
-    background-color: #282e3385;
-    z-index: 101;
-
-    &:hover {
-      background-color: #282e33;
-    }
-
-    img {
-      width: 100%;
-    }
-  }
-
-  .color-change {
-    position: absolute;
-    bottom: 1px;
-    right: 40px;
-    margin: auto;
-    border-radius: 5px;
-    z-index: 99;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
-
-    .colors {
-      width: 200px;
-      height: 70px;
-      gap: 10px;
-      position: relative;
-
-      .single-color {
-        position: absolute;
-        cursor: pointer;
-        width: 30px;
-        height: 30px;
-        outline: 2px solid white;
-        border-radius: 100px;
-        transition: all 0.15s ease-in-out;
-        animation: colorVisible 0.15s ease-in-out forwards;
-        transform: scale(0);
-
-        &:hover {
-          outline: 2px solid rgb(152, 238, 90);
-        }
-      }
-
-      .green {
-        background-color: rgb(4, 174, 103);
-        bottom: 45px;
-        right: 165px;
-        animation-delay: 0.2s;
-      }
-      .yellow {
-        background-color: rgb(195, 189, 17);
-        bottom: 5px;
-        right: 5px;
-      }
-      .orange {
-        background-color: rgb(201, 129, 6);
-        right: 45px;
-        bottom: 5px;
-        animation-delay: 0.05s;
-      }
-      .red {
-        background-color: rgb(148, 17, 7);
-        bottom: 5px;
-        right: 165px;
-        animation-delay: 0.2s;
-      }
-      .purple {
-        background-color: rgb(49, 5, 72);
-        right: 5px;
-        bottom: 45px;
-      }
-      .blue {
-        background-color: rgb(19, 17, 60);
-        right: 45px;
-        bottom: 45px;
-        animation-delay: 0.05s;
-      }
-      .teal {
-        background-color: teal;
-        bottom: 5px;
-        right: 85px;
-        animation-delay: 0.1s;
-      }
-      .cyan {
-        background-color: cyan;
-        bottom: 45px;
-        right: 85px;
-        animation-delay: 0.1s;
-      }
-      .pink {
-        background-color: rgb(226, 159, 170);
-        right: 125px;
-        bottom: 45px;
-        animation-delay: 0.15s;
-      }
-      .black {
-        background-color: gray;
-        bottom: 5px;
-        right: 125px;
-        animation-delay: 0.15s;
-      }
-    }
-  }
-
-  &::-webkit-scrollbar {
-    width: 0;
-  }
-
-  .lists {
-    border: 2px solid black;
-    border-radius: 10px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 10px;
-    overflow-y: hidden;
-    position: relative;
-    transition: all 0.2s ease-in-out;
-
-    .paint {
-      position: absolute;
-      bottom: 5px;
-      right: 5px;
-      padding: 5px;
-      border: none;
-      border-radius: 100px;
-      background-color: transparent;
-      cursor: pointer;
-      width: 30px;
-      height: 30px;
-      transition: all 0.15s ease-in-out;
-      background-color: #282e3385;
-      z-index: 101;
-
-      &:hover {
-        background-color: #282e33;
-      }
-
-      img {
-        width: 100%;
-      }
-    }
-
-    .color-change {
-      position: absolute;
-      bottom: 1px;
-      right: 40px;
-      margin: auto;
-      border-radius: 5px;
-      z-index: 99;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 10px;
-
-      .colors {
-        width: 200px;
-        height: 70px;
-        gap: 10px;
-        position: relative;
-
-        .single-color {
-          position: absolute;
-          cursor: pointer;
-          width: 30px;
-          height: 30px;
-          outline: 2px solid white;
-          border-radius: 100px;
-          transition: all 0.15s ease-in-out;
-          animation: colorVisible 0.15s ease-in-out forwards;
-          transform: scale(0);
-
-          &:hover {
-            outline: 2px solid rgb(152, 238, 90);
-          }
-        }
-
-        .green {
-          background-color: rgb(4, 174, 103);
-          bottom: 45px;
-          right: 165px;
-          animation-delay: 0.2s;
-        }
-        .yellow {
-          background-color: rgb(195, 189, 17);
-          bottom: 5px;
-          right: 5px;
-        }
-        .orange {
-          background-color: rgb(201, 129, 6);
-          right: 45px;
-          bottom: 5px;
-          animation-delay: 0.05s;
-        }
-        .red {
-          background-color: rgb(148, 17, 7);
-          bottom: 5px;
-          right: 165px;
-          animation-delay: 0.2s;
-        }
-        .purple {
-          background-color: rgb(49, 5, 72);
-          right: 5px;
-          bottom: 45px;
-        }
-        .blue {
-          background-color: rgb(19, 17, 60);
-          right: 45px;
-          bottom: 45px;
-          animation-delay: 0.05s;
-        }
-        .teal {
-          background-color: teal;
-          bottom: 5px;
-          right: 85px;
-          animation-delay: 0.1s;
-        }
-        .cyan {
-          background-color: cyan;
-          bottom: 45px;
-          right: 85px;
-          animation-delay: 0.1s;
-        }
-        .pink {
-          background-color: rgb(226, 159, 170);
-          right: 125px;
-          bottom: 45px;
-          animation-delay: 0.15s;
-        }
-        .black {
-          background-color: gray;
-          bottom: 5px;
-          right: 125px;
-          animation-delay: 0.15s;
-        }
-      }
-    }
-
-    &::-webkit-scrollbar {
-      width: 0;
-    }
-
-    .header {
-      width: 100%;
-      padding: 5px 10px;
-      background-color: rgba(0, 0, 0, 0.4);
-      font-size: 30px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 55px;
-      border-bottom: 2px solid black;
-      color: white;
-
-      .add-section {
-        position: relative;
-        width: 82px;
-        height: 32px;
-        border-radius: 100px;
-        cursor: pointer;
-        overflow: hidden;
-        transition: all 0.15s ease-in-out;
-
-        &:hover {
-          background-color: #282e33;
-
-          .add {
-            background-color: #282e33;
-          }
-        }
-
-        img {
-          position: absolute;
-        }
-
-        .settings {
-          width: 32px;
-        }
-
-        .add {
-          width: 16px;
-          top: 0;
-          bottom: 0;
-          left: 8px;
-          margin: auto;
-          background-color: black;
-          border-radius: 100%;
-          transition: all 0.15s ease-in-out;
-        }
-
-        .settings-spin {
-          animation: spinSettings 1s ease-in-out;
-        }
-
-        .add-spin {
-          animation: spinAdd 1s ease-in-out;
-        }
-
-        .tooltip {
-          position: absolute;
-          font-size: 10px;
-          bottom: 0px;
-          top: 0;
-          left: 30px;
-          right: 0px;
-          padding: 5px;
-          border-radius: 10px;
-          text-align: center;
-        }
-      }
-    }
-
-    .main-div {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      overflow-x: scroll;
-      padding: 0 10px;
-
-      &::-webkit-scrollbar {
-        background-color: transparent;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background-color: #282e33c7;
-        border-radius: 100px;
-      }
-
-      .sec-2 {
-        min-width: 250px;
-        max-width: 300px;
-        min-height: 110px;
-        height: auto;
-        align-self: flex-start;
-        flex: 0 0 auto;
-        padding-bottom: 50px;
-        position: relative;
-        overflow: visible;
-
-        .title-form {
-          input {
-            width: 97%;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 700px) {
-  main {
-    flex-direction: column;
-
-    .sec-1 {
-      width: 100%;
-      height: 300px;
-      min-height: 200px;
-    }
-
-    .lists {
-      min-height: 200px;
-    }
-  }
-}
-
-@keyframes colorVisible {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes spinSettings {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes spinAdd {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-
-// .loader {
-//   width: 200px;
-//   height: 200px;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   bottom: 0;
-//   right: 0;
-//   margin: auto;
-//   z-index: 100;
-
-//   .spin-1,
-//   .spin-2,
-//   .spin-3 {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     bottom: 0;
-//     right: 0;
-//     margin: auto;
-
-//     border: 10px solid crimson;
-//     border-radius: 50%;
-//     filter: drop-shadow(0px 0px 6px rgb(220, 20, 60));
-//   }
-
-//   .spin-1 {
-//     width: 100px;
-//     height: 100px;
-//     border-bottom-color: transparent;
-//     border-left-color: transparent;
-//     animation: spin 10s linear infinite;
-//   }
-
-//   .spin-2 {
-//     width: 70px;
-//     height: 70px;
-//     border-bottom-color: transparent;
-//     border-right-color: transparent;
-//     animation: spin 5s linear infinite;
-//   }
-
-//   .spin-3 {
-//     width: 40px;
-//     height: 40px;
-//     border-top-color: transparent;
-//     border-left-color: transparent;
-//     animation: spin 2.5s linear infinite;
-//   }
-// }
-
-// @keyframes spin {
-//   0% {
-//     transform: rotate(0deg);
-//   }
-//   100% {
-//     transform: rotate(360deg);
-//   }
-// }
-
-// /////////////////////////////////////////////////////////////////////////////////////////////////////
-// // Main container
+// /* Main container styles from original file */
 // main {
 //   display: flex;
 //   width: 100%;
 //   height: 100%;
 //   gap: 10px;
 //   padding: 20px;
+//   color: white;
 
-//   // Left section (main tasks)
 //   .sec-1 {
 //     width: 300px;
 //     position: relative;
 //     padding-bottom: 10px;
 //   }
 
-//   // Common section styles
 //   section {
 //     display: flex;
 //     flex-direction: column;
@@ -525,350 +23,132 @@ main {
 //     gap: 10px;
 //     transition: all 0.2s ease-in-out;
 //     overflow-y: auto;
+//   }
 
-//     .paint {
-//       position: absolute;
-//       bottom: 5px;
-//       right: 5px;
-//       padding: 5px;
-//       border: none;
-//       border-radius: 100px;
-//       background-color: transparent;
-//       cursor: pointer;
-//       width: 30px;
-//       height: 30px;
-//       transition: all 0.15s ease-in-out;
-//       background-color: #282e3385;
-//       z-index: 101;
+//   .paint {
+//     position: absolute;
+//     bottom: 5px;
+//     right: 5px;
+//     padding: 5px;
+//     border: none;
+//     border-radius: 100px;
+//     background-color: transparent;
+//     cursor: pointer;
+//     width: 30px;
+//     height: 30px;
+//     transition: all 0.15s ease-in-out;
+//     background-color: #282e3385;
+//     z-index: 101;
 
-//       &:hover {
-//         background-color: #282e33;
-//       }
-
-//       img {
-//         width: 100%;
-//       }
+//     &:hover {
+//       background-color: #282e33;
 //     }
 
-//     .color-change {
-//       position: absolute;
-//       // background-color: #50575f;
-//       // width: 220px;
-//       // height: 150px;
-//       // top: 0;
-//       bottom: 1px;
-//       // left: 0;
-//       right: 40px;
-//       // border: 1px solid tomato;
-//       margin: auto;
-//       border-radius: 5px;
+//     img {
+//       width: 100%;
+//     }
+//   }
 
-//       z-index: 99;
+//   .color-change {
+//     position: absolute;
+//     bottom: 1px;
+//     right: 40px;
+//     margin: auto;
+//     border-radius: 5px;
+//     z-index: 99;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     flex-direction: column;
+//     gap: 10px;
 
-//       display: flex;
-//       align-items: center;
-//       justify-content: center;
-//       flex-direction: column;
+//     .colors {
+//       width: 200px;
+//       height: 70px;
 //       gap: 10px;
+//       position: relative;
 
-//       .colors {
-//         // display: grid;
-//         // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-//         // align-items: center;
-//         // justify-content: center;
-//         width: 200px;
-//         height: 70px;
-//         gap: 10px;
-//         position: relative;
-//         // background-color: #282e33;
-
-//         .single-color {
-//           position: absolute;
-//           // top: 0;
-//           // left: 0;
-//           cursor: pointer;
-//           width: 30px;
-//           height: 30px;
-//           // background-color: tomato;
-//           // border: 1px solid black;
-//           outline: 2px solid white;
-//           border-radius: 100px;
-//           transition: all 0.15s ease-in-out;
-//           animation: colorVisible 0.15s ease-in-out forwards;
-//           transform: scale(0);
-
-//           &:hover {
-//             outline: 2px solid rgb(152, 238, 90);
-//           }
-//         }
-
-//         .green {
-//           background-color: rgb(4, 174, 103);
-//           bottom: 45px;
-//           right: 165px;
-//           animation-delay: 0.2s;
-//         }
-
-//         .yellow {
-//           background-color: rgb(195, 189, 17);
-//           bottom: 5px;
-//           right: 5px;
-//         }
-
-//         .orange {
-//           background-color: rgb(201, 129, 6);
-//           right: 45px;
-//           bottom: 5px;
-//           animation-delay: 0.05s;
-//         }
-
-//         .red {
-//           background-color: rgb(148, 17, 7);
-//           bottom: 5px;
-//           right: 165px;
-//           animation-delay: 0.2s;
-//         }
-
-//         .purple {
-//           background-color: rgb(49, 5, 72);
-//           right: 5px;
-//           bottom: 45px;
-//         }
-
-//         .blue {
-//           background-color: rgb(19, 17, 60);
-//           right: 45px;
-//           bottom: 45px;
-//           animation-delay: 0.05s;
-//         }
-
-//         .teal {
-//           background-color: teal;
-//           bottom: 5px;
-//           right: 85px;
-//           animation-delay: 0.1s;
-//         }
-
-//         .cyan {
-//           background-color: cyan;
-//           bottom: 45px;
-//           right: 85px;
-//           animation-delay: 0.1s;
-//         }
-
-//         .pink {
-//           background-color: rgb(226, 159, 170);
-//           right: 125px;
-//           bottom: 45px;
-//           animation-delay: 0.15s;
-//         }
-
-//         .black {
-//           background-color: gray;
-//           bottom: 5px;
-//           right: 125px;
-//           animation-delay: 0.15s;
-//         }
-//       }
-//     }
-
-//     // Hide scrollbar
-//     &::-webkit-scrollbar {
-//       width: 0;
-//     }
-
-//     // Section title/form
-//     .title {
-//       background-color: rgba(0, 0, 0, 0.4);
-//       border-bottom: 2px solid black;
-//       width: 100%;
-//       height: 50px;
-//       display: flex;
-//       align-items: center;
-//       padding: 10px 3px;
-//       gap: 2px;
-//       // justify-content: center;
-//       // border-top-right-radius: 10px;
-//       // background-color: #ff4444;
-
-//       input {
-//         flex: 1;
-//         // width: 75%;
-//         height: 30px;
-//         padding: 5px;
-//         background-color: rgb(33, 29, 29);
-//         border: 2px solid black;
-//         border-radius: 5px;
-//         outline: none;
-//         // background-color: #ff4444;
-//       }
-
-//       button {
-//         min-width: 63px;
+//       .single-color {
+//         position: absolute;
 //         cursor: pointer;
-//         border: 2px solid black;
-//         border-radius: 5px;
-//         background-color: rgb(33, 29, 29);
-//         padding: 5px 0;
-//         transition: all 0.15s ease-in-out;
-
-//         &:hover {
-//           background-color: white;
-//           color: black;
-//         }
-//       }
-//     }
-
-//     // Section header (for custom sections)
-//     .section-header {
-//       background-color: rgba(0, 0, 0, 0.4);
-//       border-bottom: 2px solid black;
-//       width: 100%;
-//       height: 50px;
-//       display: flex;
-//       align-items: center;
-//       justify-content: space-between;
-//       padding: 10px;
-//       border-top-right-radius: 5px;
-//       border-top-left-radius: 5px;
-
-//       .title {
-//         background: none;
-//         border: none;
-//         width: auto;
-//         height: auto;
-//         padding: 0;
-//         flex: 1;
-//       }
-
-//       .size {
-//         margin-right: 3px;
-
-//         img {
-//           transform: rotateZ(45deg);
-//         }
-//       }
-
-//       .delete-section,
-//       .hide,
-//       .zoom {
-//         cursor: pointer;
-//         border: 2px solid black;
-//         border-radius: 5px;
-//         background-color: rgb(33, 29, 29);
-//         padding: 5px;
-//         transition: all 0.15s ease-in-out;
 //         width: 30px;
 //         height: 30px;
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-
-//         &:hover {
-//           background-color: #ff4444;
-//           border-color: #ff4444;
-//         }
-
-//         img {
-//           width: 16px;
-//           height: 16px;
-//         }
-//       }
-//     }
-
-//     // Task items
-//     .task-div {
-//       display: flex;
-//       align-items: center;
-//       min-height: 34px;
-//       gap: 10px;
-//       cursor: grab;
-//       position: relative;
-//       padding: 0 10px;
-//       background-color: rgb(33, 29, 29);
-//       width: 90%;
-//       border-radius: 5px;
-//       box-shadow: 2px 2px rgba(255, 255, 255, 0.556);
-//       transition: all 0.15s ease-in-out;
-
-//       &:active {
-//         cursor: grabbing;
-//       }
-
-//       // Action buttons (delete, edit, save)
-//       .delete,
-//       .edit,
-//       .save {
-//         position: absolute;
-//         right: 2px;
-//         border: none;
-//         padding: 3px;
-//         background-color: transparent;
-//         cursor: pointer;
+//         outline: 2px solid white;
 //         border-radius: 100px;
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-
-//         &:hover {
-//           background-color: rgb(54, 48, 48);
-//         }
-
-//         img {
-//           width: 20px;
-//           border-radius: 100px;
-//         }
-//       }
-
-//       .delete {
-//         right: 30px;
-//       }
-
-//       // Circle checkbox
-//       .circle {
-//         cursor: pointer;
-//         position: absolute;
-//         width: 15px;
-//         height: 15px;
-//         background-color: transparent;
-//         left: 10px;
-//         border-radius: 100px;
-//         border: 1px solid white;
-//         transition: all 0.2s ease-in-out;
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//         z-index: 10;
-
-//         .mark {
-//           width: 11px;
-//         }
-//       }
-
-//       // Task content
-//       .task {
-//         max-width: 85%;
-//         height: 100%;
 //         transition: all 0.15s ease-in-out;
-//         word-wrap: break-word;
-//         overflow-wrap: break-word;
-//         hyphens: manual;
-//         position: relative;
+//         animation: colorVisible 0.15s ease-in-out forwards;
+//         transform: scale(0);
 
-//         .task-edit {
-//           width: 108%;
-//           height: 100%;
-//           border: none;
-//           background-color: rgb(60, 55, 55);
-//           outline: none;
-//           border-radius: 3px;
-//           padding: 5px 8px;
+//         &:hover {
+//           outline: 2px solid rgb(152, 238, 90);
 //         }
+//       }
+
+//       .green {
+//         background-color: rgb(4, 174, 103);
+//         bottom: 45px;
+//         right: 165px;
+//         animation-delay: 0.2s;
+//       }
+//       .yellow {
+//         background-color: rgb(195, 189, 17);
+//         bottom: 5px;
+//         right: 5px;
+//       }
+//       .orange {
+//         background-color: rgb(201, 129, 6);
+//         right: 45px;
+//         bottom: 5px;
+//         animation-delay: 0.05s;
+//       }
+//       .red {
+//         background-color: rgb(148, 17, 7);
+//         bottom: 5px;
+//         right: 165px;
+//         animation-delay: 0.2s;
+//       }
+//       .purple {
+//         background-color: rgb(49, 5, 72);
+//         right: 5px;
+//         bottom: 45px;
+//       }
+//       .blue {
+//         background-color: rgb(19, 17, 60);
+//         right: 45px;
+//         bottom: 45px;
+//         animation-delay: 0.05s;
+//       }
+//       .teal {
+//         background-color: teal;
+//         bottom: 5px;
+//         right: 85px;
+//         animation-delay: 0.1s;
+//       }
+//       .cyan {
+//         background-color: cyan;
+//         bottom: 45px;
+//         right: 85px;
+//         animation-delay: 0.1s;
+//       }
+//       .pink {
+//         background-color: rgb(226, 159, 170);
+//         right: 125px;
+//         bottom: 45px;
+//         animation-delay: 0.15s;
+//       }
+//       .black {
+//         background-color: gray;
+//         bottom: 5px;
+//         right: 125px;
+//         animation-delay: 0.15s;
 //       }
 //     }
 //   }
 
-//   // Right section (lists container)
+//   &::-webkit-scrollbar {
+//     width: 0;
+//   }
+
 //   .lists {
 //     border: 2px solid black;
 //     border-radius: 10px;
@@ -879,7 +159,6 @@ main {
 //     gap: 10px;
 //     overflow-y: hidden;
 //     position: relative;
-//     // background: linear-gradient(to bottom, rgb(77, 17, 27), rgb(208, 79, 101));
 //     transition: all 0.2s ease-in-out;
 
 //     .paint {
@@ -908,19 +187,11 @@ main {
 
 //     .color-change {
 //       position: absolute;
-//       // background-color: #50575f;
-//       // width: 220px;
-//       // height: 150px;
-//       // top: 0;
 //       bottom: 1px;
-//       // left: 0;
 //       right: 40px;
-//       // border: 1px solid tomato;
 //       margin: auto;
 //       border-radius: 5px;
-
 //       z-index: 99;
-
 //       display: flex;
 //       align-items: center;
 //       justify-content: center;
@@ -928,25 +199,16 @@ main {
 //       gap: 10px;
 
 //       .colors {
-//         // display: grid;
-//         // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-//         // align-items: center;
-//         // justify-content: center;
 //         width: 200px;
 //         height: 70px;
 //         gap: 10px;
 //         position: relative;
-//         // background-color: #282e33;
 
 //         .single-color {
 //           position: absolute;
-//           // top: 0;
-//           // left: 0;
 //           cursor: pointer;
 //           width: 30px;
 //           height: 30px;
-//           // background-color: tomato;
-//           // border: 1px solid black;
 //           outline: 2px solid white;
 //           border-radius: 100px;
 //           transition: all 0.15s ease-in-out;
@@ -964,61 +226,52 @@ main {
 //           right: 165px;
 //           animation-delay: 0.2s;
 //         }
-
 //         .yellow {
 //           background-color: rgb(195, 189, 17);
 //           bottom: 5px;
 //           right: 5px;
 //         }
-
 //         .orange {
 //           background-color: rgb(201, 129, 6);
 //           right: 45px;
 //           bottom: 5px;
 //           animation-delay: 0.05s;
 //         }
-
 //         .red {
 //           background-color: rgb(148, 17, 7);
 //           bottom: 5px;
 //           right: 165px;
 //           animation-delay: 0.2s;
 //         }
-
 //         .purple {
 //           background-color: rgb(49, 5, 72);
 //           right: 5px;
 //           bottom: 45px;
 //         }
-
 //         .blue {
 //           background-color: rgb(19, 17, 60);
 //           right: 45px;
 //           bottom: 45px;
 //           animation-delay: 0.05s;
 //         }
-
 //         .teal {
 //           background-color: teal;
 //           bottom: 5px;
 //           right: 85px;
 //           animation-delay: 0.1s;
 //         }
-
 //         .cyan {
 //           background-color: cyan;
 //           bottom: 45px;
 //           right: 85px;
 //           animation-delay: 0.1s;
 //         }
-
 //         .pink {
 //           background-color: rgb(226, 159, 170);
 //           right: 125px;
 //           bottom: 45px;
 //           animation-delay: 0.15s;
 //         }
-
 //         .black {
 //           background-color: gray;
 //           bottom: 5px;
@@ -1028,55 +281,10 @@ main {
 //       }
 //     }
 
-//     // Hide scrollbar
 //     &::-webkit-scrollbar {
 //       width: 0;
 //     }
 
-//     .hidden-section {
-//       cursor: pointer;
-//       width: 50px;
-//       // height: 120px;
-//       gap: 0px;
-//       // padding: 10px 0;
-//       height: auto;
-//       min-height: 170px;
-//       background-color: rgb(19, 17, 60);
-//       display: flex;
-//       flex-direction: column;
-//       align-items: center;
-//       justify-content: space-around;
-//       border-radius: 10px;
-//       border: 2px solid black;
-//       transition: all 0.15s ease-in-out;
-
-//       &:hover {
-//         background-color: rgb(39, 36, 101);
-//       }
-
-//       .title-text,
-//       .tasks-num {
-//         transform: rotateZ(90deg);
-//         font-weight: bold;
-//         // background-color: #ff4444;
-//       }
-
-//       .zoom {
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//         border: none;
-//         background-color: transparent;
-//         cursor: pointer;
-
-//         img {
-//           width: 20px;
-//           transform: rotateZ(45deg);
-//         }
-//       }
-//     }
-
-//     // Header
 //     .header {
 //       width: 100%;
 //       padding: 5px 10px;
@@ -1090,7 +298,6 @@ main {
 //       border-bottom: 2px solid black;
 //       color: white;
 
-//       // Add section button
 //       .add-section {
 //         position: relative;
 //         width: 82px;
@@ -1149,7 +356,6 @@ main {
 //       }
 //     }
 
-//     // Main content area
 //     .main-div {
 //       height: 100%;
 //       width: 100%;
@@ -1159,7 +365,6 @@ main {
 //       overflow-x: scroll;
 //       padding: 0 10px;
 
-//       // Custom scrollbar
 //       &::-webkit-scrollbar {
 //         background-color: transparent;
 //       }
@@ -1169,7 +374,6 @@ main {
 //         border-radius: 100px;
 //       }
 
-//       // Section containers
 //       .sec-2 {
 //         min-width: 250px;
 //         max-width: 300px;
@@ -1177,9 +381,6 @@ main {
 //         height: auto;
 //         align-self: flex-start;
 //         flex: 0 0 auto;
-//         padding-bottom: 10px;
-//         // background-color: antiquewhite;
-//         // width: 50px;
 //         padding-bottom: 50px;
 //         position: relative;
 //         overflow: visible;
@@ -1191,21 +392,9 @@ main {
 //         }
 //       }
 //     }
-
-//     // Custom scrollbar for lists container
-//     &::-webkit-scrollbar {
-//       background-color: transparent;
-//     }
-
-//     &::-webkit-scrollbar-thumb {
-//       background-color: #282e33c7;
-//       border-radius: 100px;
-//       display: none;
-//     }
 //   }
 // }
 
-// // Responsive design
 // @media (max-width: 700px) {
 //   main {
 //     flex-direction: column;
@@ -1222,12 +411,10 @@ main {
 //   }
 // }
 
-// // Animations
 // @keyframes colorVisible {
 //   0% {
 //     transform: scale(0);
 //   }
-
 //   100% {
 //     transform: scale(1);
 //   }
@@ -1251,68 +438,881 @@ main {
 //   }
 // }
 
-// // Undo notification
-// .undo {
-//   width: 250px;
-//   height: 150px;
-//   background-color: #282e33;
-//   position: absolute;
-//   bottom: 20px;
-//   left: 20px;
-//   border-radius: 10px;
-//   border: 1px solid rgba(255, 255, 255, 0.414);
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   gap: 30px;
-//   font-size: 25px;
-//   transform: translateX(-300px);
-//   animation: move 5s ease-in-out;
+.loader {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  z-index: 100;
 
-//   button {
-//     cursor: pointer;
-//     border: 1px solid rgba(255, 255, 255, 0.414);
-//     padding: 5px;
-//     border-radius: 5px;
-//     background-color: transparent;
-//     font-size: 20px;
-//     transition: all 0.15s ease-in-out;
+  .spin-1,
+  .spin-2,
+  .spin-3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
 
-//     &:hover {
-//       background-color: rgb(66, 73, 79);
-//     }
-//   }
+    border: 10px solid crimson;
+    border-radius: 50%;
+    filter: drop-shadow(0px 0px 6px rgb(220, 20, 60));
+  }
 
-//   .close,
-//   .info {
-//     cursor: pointer;
-//     position: absolute;
-//     width: 20px;
-//   }
+  .spin-1 {
+    width: 100px;
+    height: 100px;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    animation: spin 10s linear infinite;
+  }
 
-//   .info {
-//     top: 10px;
-//     left: 10px;
-//   }
+  .spin-2 {
+    width: 70px;
+    height: 70px;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    animation: spin 5s linear infinite;
+  }
 
-//   .close {
-//     right: 10px;
-//     top: 10px;
-//   }
-// }
+  .spin-3 {
+    width: 40px;
+    height: 40px;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    animation: spin 2.5s linear infinite;
+  }
+}
 
-// @keyframes move {
-//   0% {
-//     transform: translateX(-300px);
-//   }
-//   8% {
-//     transform: translateX(0);
-//   }
-//   92% {
-//     transform: translateX(0);
-//   }
-//   100% {
-//     transform: translateX(-300px);
-//   }
-// }
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// Main container
+main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 10px;
+  padding: 20px;
+
+  // Left section (main tasks)
+  .sec-1 {
+    width: 300px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  // Common section styles
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(19, 17, 60);
+    border-radius: 10px;
+    border: 2px solid black;
+    gap: 10px;
+    transition: all 0.2s ease-in-out;
+    overflow-y: auto;
+
+    .paint {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      padding: 5px;
+      border: none;
+      border-radius: 100px;
+      background-color: transparent;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      transition: all 0.15s ease-in-out;
+      background-color: #282e3385;
+      z-index: 101;
+
+      &:hover {
+        background-color: #282e33;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .color-change {
+      position: absolute;
+      // background-color: #50575f;
+      // width: 220px;
+      // height: 150px;
+      // top: 0;
+      bottom: 1px;
+      // left: 0;
+      right: 40px;
+      // border: 1px solid tomato;
+      margin: auto;
+      border-radius: 5px;
+
+      z-index: 99;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+
+      .colors {
+        // display: grid;
+        // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        // align-items: center;
+        // justify-content: center;
+        width: 200px;
+        height: 70px;
+        gap: 10px;
+        position: relative;
+        // background-color: #282e33;
+
+        .single-color {
+          position: absolute;
+          // top: 0;
+          // left: 0;
+          cursor: pointer;
+          width: 30px;
+          height: 30px;
+          // background-color: tomato;
+          // border: 1px solid black;
+          outline: 2px solid white;
+          border-radius: 100px;
+          transition: all 0.15s ease-in-out;
+          animation: colorVisible 0.15s ease-in-out forwards;
+          transform: scale(0);
+
+          &:hover {
+            outline: 2px solid rgb(152, 238, 90);
+          }
+        }
+
+        .green {
+          background-color: rgb(4, 174, 103);
+          bottom: 45px;
+          right: 165px;
+          animation-delay: 0.2s;
+        }
+
+        .yellow {
+          background-color: rgb(195, 189, 17);
+          bottom: 5px;
+          right: 5px;
+        }
+
+        .orange {
+          background-color: rgb(201, 129, 6);
+          right: 45px;
+          bottom: 5px;
+          animation-delay: 0.05s;
+        }
+
+        .red {
+          background-color: rgb(148, 17, 7);
+          bottom: 5px;
+          right: 165px;
+          animation-delay: 0.2s;
+        }
+
+        .purple {
+          background-color: rgb(49, 5, 72);
+          right: 5px;
+          bottom: 45px;
+        }
+
+        .blue {
+          background-color: rgb(19, 17, 60);
+          right: 45px;
+          bottom: 45px;
+          animation-delay: 0.05s;
+        }
+
+        .teal {
+          background-color: teal;
+          bottom: 5px;
+          right: 85px;
+          animation-delay: 0.1s;
+        }
+
+        .cyan {
+          background-color: cyan;
+          bottom: 45px;
+          right: 85px;
+          animation-delay: 0.1s;
+        }
+
+        .pink {
+          background-color: rgb(226, 159, 170);
+          right: 125px;
+          bottom: 45px;
+          animation-delay: 0.15s;
+        }
+
+        .black {
+          background-color: gray;
+          bottom: 5px;
+          right: 125px;
+          animation-delay: 0.15s;
+        }
+      }
+    }
+
+    // Hide scrollbar
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
+    // Section title/form
+    .title {
+      background-color: rgba(0, 0, 0, 0.4);
+      border-bottom: 2px solid black;
+      width: 100%;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      padding: 10px 3px;
+      gap: 2px;
+      // justify-content: center;
+      // border-top-right-radius: 10px;
+      // background-color: #ff4444;
+
+      input {
+        flex: 1;
+        // width: 75%;
+        height: 30px;
+        padding: 5px;
+        background-color: rgb(33, 29, 29);
+        border: 2px solid black;
+        border-radius: 5px;
+        outline: none;
+        // background-color: #ff4444;
+      }
+
+      button {
+        min-width: 63px;
+        cursor: pointer;
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: rgb(33, 29, 29);
+        padding: 5px 0;
+        transition: all 0.15s ease-in-out;
+
+        &:hover {
+          background-color: white;
+          color: black;
+        }
+      }
+    }
+
+    // Section header (for custom sections)
+    .section-header {
+      background-color: rgba(0, 0, 0, 0.4);
+      border-bottom: 2px solid black;
+      width: 100%;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+
+      .title {
+        background: none;
+        border: none;
+        width: auto;
+        height: auto;
+        padding: 0;
+        flex: 1;
+      }
+
+      .size {
+        margin-right: 3px;
+
+        img {
+          transform: rotateZ(45deg);
+        }
+      }
+
+      .delete-section,
+      .hide,
+      .zoom {
+        cursor: pointer;
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: rgb(33, 29, 29);
+        padding: 5px;
+        transition: all 0.15s ease-in-out;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background-color: #ff4444;
+          border-color: #ff4444;
+        }
+
+        img {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+
+    // Task items
+    .task-div {
+      display: flex;
+      align-items: center;
+      min-height: 34px;
+      gap: 10px;
+      cursor: grab;
+      position: relative;
+      padding: 0 10px;
+      background-color: rgb(33, 29, 29);
+      width: 90%;
+      border-radius: 5px;
+      box-shadow: 2px 2px rgba(255, 255, 255, 0.556);
+      transition: all 0.15s ease-in-out;
+
+      &:active {
+        cursor: grabbing;
+      }
+
+      // Action buttons (delete, edit, save)
+      .delete,
+      .edit,
+      .save {
+        position: absolute;
+        right: 2px;
+        border: none;
+        padding: 3px;
+        background-color: transparent;
+        cursor: pointer;
+        border-radius: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background-color: rgb(54, 48, 48);
+        }
+
+        img {
+          width: 20px;
+          border-radius: 100px;
+        }
+      }
+
+      .delete {
+        right: 30px;
+      }
+
+      // Circle checkbox
+      .circle {
+        cursor: pointer;
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background-color: transparent;
+        left: 10px;
+        border-radius: 100px;
+        border: 1px solid white;
+        transition: all 0.2s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+
+        .mark {
+          width: 11px;
+        }
+      }
+
+      // Task content
+      .task {
+        max-width: 85%;
+        height: 100%;
+        transition: all 0.15s ease-in-out;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: manual;
+        position: relative;
+
+        .task-edit {
+          width: 108%;
+          height: 100%;
+          border: none;
+          background-color: rgb(60, 55, 55);
+          outline: none;
+          border-radius: 3px;
+          padding: 5px 8px;
+        }
+      }
+    }
+  }
+
+  // Right section (lists container)
+  .lists {
+    border: 2px solid black;
+    border-radius: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    overflow-y: hidden;
+    position: relative;
+    // background: linear-gradient(to bottom, rgb(77, 17, 27), rgb(208, 79, 101));
+    transition: all 0.2s ease-in-out;
+
+    .paint {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      padding: 5px;
+      border: none;
+      border-radius: 100px;
+      background-color: transparent;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      transition: all 0.15s ease-in-out;
+      background-color: #282e3385;
+      z-index: 101;
+
+      &:hover {
+        background-color: #282e33;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .color-change {
+      position: absolute;
+      // background-color: #50575f;
+      // width: 220px;
+      // height: 150px;
+      // top: 0;
+      bottom: 1px;
+      // left: 0;
+      right: 40px;
+      // border: 1px solid tomato;
+      margin: auto;
+      border-radius: 5px;
+
+      z-index: 99;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+
+      .colors {
+        // display: grid;
+        // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        // align-items: center;
+        // justify-content: center;
+        width: 200px;
+        height: 70px;
+        gap: 10px;
+        position: relative;
+        // background-color: #282e33;
+
+        .single-color {
+          position: absolute;
+          // top: 0;
+          // left: 0;
+          cursor: pointer;
+          width: 30px;
+          height: 30px;
+          // background-color: tomato;
+          // border: 1px solid black;
+          outline: 2px solid white;
+          border-radius: 100px;
+          transition: all 0.15s ease-in-out;
+          animation: colorVisible 0.15s ease-in-out forwards;
+          transform: scale(0);
+
+          &:hover {
+            outline: 2px solid rgb(152, 238, 90);
+          }
+        }
+
+        .green {
+          background-color: rgb(4, 174, 103);
+          bottom: 45px;
+          right: 165px;
+          animation-delay: 0.2s;
+        }
+
+        .yellow {
+          background-color: rgb(195, 189, 17);
+          bottom: 5px;
+          right: 5px;
+        }
+
+        .orange {
+          background-color: rgb(201, 129, 6);
+          right: 45px;
+          bottom: 5px;
+          animation-delay: 0.05s;
+        }
+
+        .red {
+          background-color: rgb(148, 17, 7);
+          bottom: 5px;
+          right: 165px;
+          animation-delay: 0.2s;
+        }
+
+        .purple {
+          background-color: rgb(49, 5, 72);
+          right: 5px;
+          bottom: 45px;
+        }
+
+        .blue {
+          background-color: rgb(19, 17, 60);
+          right: 45px;
+          bottom: 45px;
+          animation-delay: 0.05s;
+        }
+
+        .teal {
+          background-color: teal;
+          bottom: 5px;
+          right: 85px;
+          animation-delay: 0.1s;
+        }
+
+        .cyan {
+          background-color: cyan;
+          bottom: 45px;
+          right: 85px;
+          animation-delay: 0.1s;
+        }
+
+        .pink {
+          background-color: rgb(226, 159, 170);
+          right: 125px;
+          bottom: 45px;
+          animation-delay: 0.15s;
+        }
+
+        .black {
+          background-color: gray;
+          bottom: 5px;
+          right: 125px;
+          animation-delay: 0.15s;
+        }
+      }
+    }
+
+    // Hide scrollbar
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
+    .hidden-section {
+      cursor: pointer;
+      width: 50px;
+      // height: 120px;
+      gap: 0px;
+      // padding: 10px 0;
+      height: auto;
+      min-height: 170px;
+      background-color: rgb(19, 17, 60);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      border-radius: 10px;
+      border: 2px solid black;
+      transition: all 0.15s ease-in-out;
+
+      &:hover {
+        background-color: rgb(39, 36, 101);
+      }
+
+      .title-text,
+      .tasks-num {
+        transform: rotateZ(90deg);
+        font-weight: bold;
+        // background-color: #ff4444;
+      }
+
+      .zoom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+
+        img {
+          width: 20px;
+          transform: rotateZ(45deg);
+        }
+      }
+    }
+
+    // Header
+    .header {
+      width: 100%;
+      padding: 5px 10px;
+      background-color: rgba(0, 0, 0, 0.4);
+      font-size: 30px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 55px;
+      border-bottom: 2px solid black;
+      color: white;
+
+      // Add section button
+      .add-section {
+        position: relative;
+        width: 82px;
+        height: 32px;
+        border-radius: 100px;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all 0.15s ease-in-out;
+
+        &:hover {
+          background-color: #282e33;
+
+          .add {
+            background-color: #282e33;
+          }
+        }
+
+        img {
+          position: absolute;
+        }
+
+        .settings {
+          width: 32px;
+        }
+
+        .add {
+          width: 16px;
+          top: 0;
+          bottom: 0;
+          left: 8px;
+          margin: auto;
+          background-color: black;
+          border-radius: 100%;
+          transition: all 0.15s ease-in-out;
+        }
+
+        .settings-spin {
+          animation: spinSettings 1s ease-in-out;
+        }
+
+        .add-spin {
+          animation: spinAdd 1s ease-in-out;
+        }
+
+        .tooltip {
+          position: absolute;
+          font-size: 10px;
+          bottom: 0px;
+          top: 0;
+          left: 30px;
+          right: 0px;
+          padding: 5px;
+          border-radius: 10px;
+          text-align: center;
+        }
+      }
+    }
+
+    // Main content area
+    .main-div {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      overflow-x: scroll;
+      padding: 0 10px;
+
+      // Custom scrollbar
+      &::-webkit-scrollbar {
+        background-color: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #282e33c7;
+        border-radius: 100px;
+      }
+
+      // Section containers
+      .sec-2 {
+        min-width: 250px;
+        max-width: 300px;
+        min-height: 110px;
+        height: auto;
+        align-self: flex-start;
+        flex: 0 0 auto;
+        padding-bottom: 10px;
+        // background-color: antiquewhite;
+        // width: 50px;
+        padding-bottom: 50px;
+        position: relative;
+        overflow: visible;
+
+        .title-form {
+          input {
+            width: 97%;
+          }
+        }
+      }
+    }
+
+    // Custom scrollbar for lists container
+    &::-webkit-scrollbar {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #282e33c7;
+      border-radius: 100px;
+      display: none;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 700px) {
+  main {
+    flex-direction: column;
+
+    .sec-1 {
+      width: 100%;
+      height: 300px;
+      min-height: 200px;
+    }
+
+    .lists {
+      min-height: 200px;
+    }
+  }
+}
+
+// Animations
+@keyframes colorVisible {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spinSettings {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinAdd {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+// Undo notification
+.undo {
+  width: 250px;
+  height: 150px;
+  background-color: #282e33;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.414);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  font-size: 25px;
+  transform: translateX(-300px);
+  animation: move 5s ease-in-out;
+
+  button {
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.414);
+    padding: 5px;
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 20px;
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+      background-color: rgb(66, 73, 79);
+    }
+  }
+
+  .close,
+  .info {
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+  }
+
+  .info {
+    top: 10px;
+    left: 10px;
+  }
+
+  .close {
+    right: 10px;
+    top: 10px;
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(-300px);
+  }
+  8% {
+    transform: translateX(0);
+  }
+  92% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-300px);
+  }
+}
