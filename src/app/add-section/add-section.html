@@ -1,1 +1,126 @@
-<p>add-section works!</p>
+@for(list of tasksSrv.newSectionArray(); track $index; let sectionIndex =
+$index){ @if(list.exist && !list.collapsed){
+<section
+  class="sec-2"
+  (dragover)="onDragOver($event)"
+  [ngStyle]="{ 'background-color': list.color }"
+  (drop)="dropToSection($event, sectionIndex)"
+>
+  <button class="paint" (click)="tasksSrv.showSectionColorPicker(sectionIndex)">
+    <img src="brush.png" alt="brush" />
+  </button>
+
+  @if(tasksSrv.showSectionColors[sectionIndex]){
+  <div class="color-change">
+    <div class="colors">
+      <div
+        class="single-color green"
+        (click)="tasksSrv.changeSectionColor(sectionIndex, 'rgb(4, 174, 103)')"
+      ></div>
+      <div
+        class="single-color yellow"
+        (click)="tasksSrv.changeSectionColor(sectionIndex, 'rgb(195, 189, 17)')"
+      ></div>
+      <div
+        class="single-color orange"
+        (click)="tasksSrv.changeSectionColor(sectionIndex, 'rgb(201, 129, 6)')"
+      ></div>
+      <div
+        class="single-color red"
+        (click)="tasksSrv.changeSectionColor(sectionIndex, 'rgb(148, 17, 7)')"
+      ></div>
+      <div
+        class="single-color purple"
+        (click)="tasksSrv.changeSectionColor(sectionIndex, 'rgb(49, 5, 72)')"
+      ></div>
+      <div
+        class="single-color blue"
+        (click)="tasksSrv.changeSectionColor(sectionIndex, 'rgb(19, 17, 60)')"
+      ></div>
+      <div
+        class="single-color teal"
+        (click)="tasksSrv.changeSectionColor(sectionIndex, 'teal')"
+      ></div>
+      <div
+        class="single-color cyan"
+        (click)="tasksSrv.changeSectionColor(sectionIndex, 'cyan')"
+      ></div>
+      <div
+        class="single-color pink"
+        (click)="
+          tasksSrv.changeSectionColor(sectionIndex, 'rgb(226, 159, 170)')
+        "
+      ></div>
+      <div
+        class="single-color black"
+        (click)="tasksSrv.changeSectionColor(sectionIndex, 'gray')"
+      ></div>
+    </div>
+  </div>
+  }
+
+  <div class="section-header">
+    @if(!list.clickOnTitle){
+    <form class="title" (click)="tasksSrv.changeTitle(sectionIndex)">
+      {{ list.title || "New Section" }}
+    </form>
+    }@else{
+    <form
+      class="title title-form"
+      (ngSubmit)="tasksSrv.saveSectionTitle(sectionIndex)"
+    >
+      <input
+        type="text"
+        [(ngModel)]="list.title"
+        autofocus
+        name="edit-{{ sectionIndex }}"
+        [value]="list.title"
+      />
+    </form>
+    }
+    <button
+      class="size hide"
+      (click)="tasksSrv.toggleSectionCollapsed(sectionIndex)"
+    >
+      <img src="hide.png" alt="hide" />
+    </button>
+    <button
+      class="delete-section"
+      (click)="tasksSrv.deleteSection(sectionIndex)"
+    >
+      <img src="delete.png" alt="delete-section" />
+    </button>
+  </div>
+
+  @for(task of list.tasks; track $index; let taskIndex = $index){
+  <app-single-task
+    [task]="task"
+    index="{{ $index }}"
+    [sectionIndex]="sectionIndex"
+    list="'section'"
+  ></app-single-task>
+  }
+
+  <!-- input for new task in section -->
+  <form class="title" (ngSubmit)="addTaskToSection(sectionIndex)">
+    <input
+      type="text"
+      name="task-input"
+      [(ngModel)]="tasksSrv.newSectionArray()[sectionIndex].newTask"
+    />
+    <button type="submit">Add</button>
+  </form>
+</section>
+}@else if(list.exist){
+<div
+  class="hidden-section"
+  (click)="tasksSrv.toggleSectionCollapsed(sectionIndex)"
+  [ngStyle]="{ 'background-color': list.color }"
+>
+  <button class="size zoom">
+    <img src="zoom.png" alt="zoom" />
+  </button>
+  <div class="title-text">{{ list.title || "New Section" }}</div>
+  <div class="tasks-num">{{ list.tasks.length }}</div>
+</div>
+} }

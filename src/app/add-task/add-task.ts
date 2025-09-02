@@ -1,35 +1,39 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Output,
-} from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule, NgClass, NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TaskService } from '../shared/task-service';
+import { SingleTaskComponent } from '../single-task/single-task';
 
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [FormsModule],
-  template: `
-    <form class="title" (ngSubmit)="submitTask()">
-      <input
-        type="text"
-        placeholder="Add Task"
-        [(ngModel)]="taskTitle"
-        name="taskTitle"
-      />
-      <button type="submit">Add Task</button>
-    </form>
-  `,
-  styleUrl: './add-task.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    FormsModule,
+    NgStyle,
+    // NgClass,
+    SingleTaskComponent,
+  ],
+  templateUrl: './add-task.html',
+  styleUrls: ['./add-task.scss'],
 })
 export class AddTaskComponent {
-  taskTitle = '';
-  @Output() onAddTask = new EventEmitter<string>();
+  constructor(public tasksSrv: TaskService) {}
 
-  submitTask() {
-    this.onAddTask.emit(this.taskTitle);
-    this.taskTitle = '';
+  onDragStart(i: number, from: string) {
+    this.tasksSrv.onDragStart(i, from);
+  }
+
+  onDragOver(e: DragEvent) {
+    this.tasksSrv.onDragOver(e);
+  }
+
+  getDropIndex(e: DragEvent, listName: 'tasks' | 'todayTasks') {
+    return this.tasksSrv.getDropIndex(e, listName);
+  }
+
+  dropToMain(e: DragEvent) {
+    const idx = this.tasksSrv.getDropIndex(e, 'tasks');
+    this.tasksSrv.dropTaskToMainList('tasks', idx);
   }
 }

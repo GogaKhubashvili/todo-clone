@@ -1,27 +1,6 @@
-/* Section styles from original file */
-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: rgb(19, 17, 60);
-  border-radius: 10px;
-  border: 2px solid black;
-  gap: 10px;
-  transition: all 0.2s ease-in-out;
-  overflow-y: auto;
-  position: relative;
-}
-
+/* Reuse section styles */
 .sec-2 {
-  min-width: 250px;
-  max-width: 300px;
-  min-height: 110px;
-  height: auto;
-  align-self: flex-start;
-  flex: 0 0 auto;
-  padding-bottom: 50px;
   position: relative;
-  overflow: visible;
 
   .title-form {
     input {
@@ -30,231 +9,36 @@ section {
   }
 }
 
-.section-header {
-  background-color: rgba(0, 0, 0, 0.4);
-  border-bottom: 2px solid black;
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-
-  .title {
-    background: none;
-    border: none;
-    width: auto;
-    height: auto;
-    padding: 0;
-    flex: 1;
-  }
-
-  .size {
-    margin-right: 3px;
-
-    img {
-      transform: rotateZ(45deg);
-    }
-  }
-
-  .delete-section,
-  .hide,
-  .zoom {
-    cursor: pointer;
-    border: 2px solid black;
-    border-radius: 5px;
-    background-color: rgb(33, 29, 29);
-    padding: 5px;
-    transition: all 0.15s ease-in-out;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &:hover {
-      background-color: #ff4444;
-      border-color: #ff4444;
-    }
-
-    img {
-      width: 16px;
-      height: 16px;
-    }
-  }
-}
-
+/* 🎨 Paint/Color picker styles */
 .paint {
   position: absolute;
-  bottom: 5px;
   right: 5px;
-  padding: 5px;
-  border: none;
-  border-radius: 100px;
-  background-color: transparent;
+  top: 5px;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
-  transition: all 0.15s ease-in-out;
-  background-color: #282e3385;
-  z-index: 101;
-
-  &:hover {
-    background-color: #282e33;
-  }
 
   img {
-    width: 100%;
+    width: 20px;
   }
 }
 
 .color-change {
   position: absolute;
-  bottom: 1px;
-  right: 40px;
-  margin: auto;
+  right: -50px;
+  top: 0;
+  background-color: #282e33;
+  padding: 5px;
+  border: 1px solid black;
   border-radius: 5px;
-  z-index: 99;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  gap: 10px;
-
-  .colors {
-    width: 200px;
-    height: 70px;
-    gap: 10px;
-    position: relative;
-
-    .single-color {
-      position: absolute;
-      cursor: pointer;
-      width: 30px;
-      height: 30px;
-      outline: 2px solid white;
-      border-radius: 100px;
-      transition: all 0.15s ease-in-out;
-      animation: colorVisible 0.15s ease-in-out forwards;
-      transform: scale(0);
-
-      &:hover {
-        outline: 2px solid rgb(152, 238, 90);
-      }
-    }
-
-    .green {
-      background-color: rgb(4, 174, 103);
-      bottom: 45px;
-      right: 165px;
-      animation-delay: 0.2s;
-    }
-    .yellow {
-      background-color: rgb(195, 189, 17);
-      bottom: 5px;
-      right: 5px;
-    }
-    .orange {
-      background-color: rgb(201, 129, 6);
-      right: 45px;
-      bottom: 5px;
-      animation-delay: 0.05s;
-    }
-    .red {
-      background-color: rgb(148, 17, 7);
-      bottom: 5px;
-      right: 165px;
-      animation-delay: 0.2s;
-    }
-    .purple {
-      background-color: rgb(49, 5, 72);
-      right: 5px;
-      bottom: 45px;
-    }
-    .blue {
-      background-color: rgb(19, 17, 60);
-      right: 45px;
-      bottom: 45px;
-      animation-delay: 0.05s;
-    }
-    .teal {
-      background-color: teal;
-      bottom: 5px;
-      right: 85px;
-      animation-delay: 0.1s;
-    }
-    .cyan {
-      background-color: cyan;
-      bottom: 45px;
-      right: 85px;
-      animation-delay: 0.1s;
-    }
-    .pink {
-      background-color: rgb(226, 159, 170);
-      right: 125px;
-      bottom: 45px;
-      animation-delay: 0.15s;
-    }
-    .black {
-      background-color: gray;
-      bottom: 5px;
-      right: 125px;
-      animation-delay: 0.15s;
-    }
-  }
+  gap: 5px;
+  z-index: 100;
 }
 
-@keyframes colorVisible {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.hidden-section {
+.single-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
   cursor: pointer;
-  width: 50px;
-  gap: 0px;
-  height: auto;
-  min-height: 170px;
-  background-color: rgb(19, 17, 60);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  border-radius: 10px;
   border: 2px solid black;
-  transition: all 0.15s ease-in-out;
-
-  &:hover {
-    background-color: rgb(39, 36, 101);
-  }
-
-  .title-text,
-  .tasks-num {
-    transform: rotateZ(90deg);
-    font-weight: bold;
-  }
-
-  .zoom {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-
-    img {
-      width: 20px;
-      transform: rotateZ(45deg);
-    }
-  }
 }
-
-// &::-webkit-scrollbar {
-//   width: 0;
-// }

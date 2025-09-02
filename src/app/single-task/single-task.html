@@ -1,1 +1,60 @@
-<p>single-task works!</p>
+<div
+  class="task-div"
+  draggable="true"
+  (dragstart)="onDragStart()"
+  (mouseenter)="task.hover = true"
+  (mouseleave)="task.hover = false"
+  [ngStyle]="{
+    border: task.hover
+      ? '2px solid rgba(255, 255, 255, 0.556)'
+      : '2px solid rgb(33, 29, 29)'
+  }"
+>
+  @if(!task.saved){
+  <button
+    class="circle"
+    (click)="toggleMark()"
+    [ngStyle]="{ opacity: task.marked || task.hover ? '1' : '0' }"
+  >
+    @if(task.marked){
+    <img class="mark" src="checkmark.png" alt="checkmark" />
+    }
+  </button>
+  }
+  <div
+    class="task"
+    [ngStyle]="{
+      padding:
+        task.marked || (task.hover && !task.saved)
+          ? '6px 6px 6px 20px'
+          : '6px 0px'
+    }"
+  >
+    @if(!task.saved){
+    {{ task.task }}
+    }@else{
+    <form class="edit-form" (ngSubmit)="save()">
+      <input
+        class="task-edit"
+        type="text"
+        name="task-input"
+        [(ngModel)]="task.task"
+      />
+    </form>
+    }
+  </div>
+
+  @if(task.marked && task.hover && !task.saved){
+  <button class="delete" (click)="delete()">
+    <img src="delete.png" alt="delete-icon" />
+  </button>
+  } @if(task.hover && !task.saved){
+  <button class="edit" (click)="edit()">
+    <img src="pen.png" alt="edit" />
+  </button>
+  } @if(task.saved){
+  <button class="save" (click)="save()">
+    <img src="save.png" alt="save" />
+  </button>
+  }
+</div>

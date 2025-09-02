@@ -1,4 +1,4 @@
-/* Loader styles from original file */
+/* copy loader styles from app.scss for component-scope, or rely on global app.scss loader */
 .loader {
   width: 200px;
   height: 200px;
@@ -19,6 +19,7 @@
     bottom: 0;
     right: 0;
     margin: auto;
+
     border: 10px solid crimson;
     border-radius: 50%;
     filter: drop-shadow(0px 0px 6px rgb(220, 20, 60));
@@ -49,6 +50,7 @@
   }
 }
 
+/* keyframes (if not globally declared) */
 @keyframes spin {
   0% {
     transform: rotate(0deg);

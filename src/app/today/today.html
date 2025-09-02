@@ -1,1 +1,94 @@
-<p>today works!</p>
+<section
+  class="sec-2"
+  (dragover)="onDragOver($event)"
+  (drop)="
+    tasksSrv.dropTaskToMainList(
+      'todayTasks',
+      tasksSrv.getDropIndex($event, 'todayTasks')
+    )
+  "
+  [ngStyle]="{ background: tasksSrv.secTodayColor }"
+>
+  <button class="paint" (click)="tasksSrv.showColorsTodayToggle()">
+    <img src="brush.png" alt="brush" />
+  </button>
+
+  @if(tasksSrv.changeTodayColor()){
+  <div class="color-change">
+    <div class="colors">
+      <div
+        class="single-color green"
+        (click)="tasksSrv.changeSecTodayColor('rgb(4, 174, 103)')"
+      ></div>
+      <div
+        class="single-color yellow"
+        (click)="tasksSrv.changeSecTodayColor('rgb(195, 189, 17)')"
+      ></div>
+      <div
+        class="single-color orange"
+        (click)="tasksSrv.changeSecTodayColor('rgb(201, 129, 6)')"
+      ></div>
+      <div
+        class="single-color red"
+        (click)="tasksSrv.changeSecTodayColor('rgb(148, 17, 7)')"
+      ></div>
+      <div
+        class="single-color purple"
+        (click)="tasksSrv.changeSecTodayColor('rgb(49, 5, 72)')"
+      ></div>
+      <div
+        class="single-color blue"
+        (click)="tasksSrv.changeSecTodayColor('rgb(19, 17, 60)')"
+      ></div>
+      <div
+        class="single-color teal"
+        (click)="tasksSrv.changeSecTodayColor('teal')"
+      ></div>
+      <div
+        class="single-color cyan"
+        (click)="tasksSrv.changeSecTodayColor('cyan')"
+      ></div>
+      <div
+        class="single-color pink"
+        (click)="tasksSrv.changeSecTodayColor('rgb(226, 159, 170)')"
+      ></div>
+      <div
+        class="single-color black"
+        (click)="tasksSrv.changeSecTodayColor('gray')"
+      ></div>
+    </div>
+  </div>
+  }
+
+  <div class="section-header">
+    @if(!tasksSrv.todayClickOnTitle){
+    <form class="title" (click)="tasksSrv.changeTodayTitle()">
+      {{ tasksSrv.todayTitle || "Today" }}
+    </form>
+    }@else{
+    <form class="title title-form" (ngSubmit)="tasksSrv.saveTodayTitle()">
+      <input
+        type="text"
+        [(ngModel)]="tasksSrv.todayTitle"
+        autofocus
+        name="edit-today"
+        [value]="tasksSrv.todayTitle"
+      />
+    </form>
+    }
+    <button class="size hide" (click)="tasksSrv.toggleTodayCollapsed()">
+      <img src="hide.png" alt="hide" />
+    </button>
+    <button class="delete-section" (click)="tasksSrv.deleteTodaySection()">
+      <img src="delete.png" alt="delete-section" />
+    </button>
+  </div>
+
+  @for(task of tasksSrv.todayTasks(); track $index){
+  <app-single-task
+    [task]="task"
+    index="{{ $index }}"
+    list="'todayTasks'"
+  ></app-single-task>
+  }
+</section>

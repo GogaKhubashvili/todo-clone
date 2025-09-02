@@ -1,4 +1,155 @@
-@if(loader()){
+<!-- loader -->
+@if(tasksSrv.loader()){
+<app-loader></app-loader>
+}
+
+<main>
+  <!-- left sec-1 -> add-task component -->
+  <app-add-task></app-add-task>
+
+  <!-- right lists container -->
+  <div class="lists" [ngStyle]="{ background: tasksSrv.sec2Color }">
+    <button class="paint" (click)="tasksSrv.showColorsListaToggle()">
+      <img src="brush.png" alt="brush" />
+    </button>
+
+    @if(tasksSrv.changeListsColor()){
+    <div class="color-change">
+      <div class="colors">
+        <div
+          class="single-color green"
+          (click)="
+            tasksSrv.changeSec2Color(
+              'linear-gradient(to bottom, rgb(10, 77, 17), rgb(79, 208, 101))'
+            )
+          "
+        ></div>
+        <div
+          class="single-color yellow"
+          (click)="
+            tasksSrv.changeSec2Color(
+              'linear-gradient(to bottom, rgb(128, 108, 0), rgb(255, 235, 59))'
+            )
+          "
+        ></div>
+        <div
+          class="single-color orange"
+          (click)="
+            tasksSrv.changeSec2Color(
+              'linear-gradient(to bottom, rgb(153, 61, 0), rgb(255, 145, 77))'
+            )
+          "
+        ></div>
+        <div
+          class="single-color red"
+          (click)="
+            tasksSrv.changeSec2Color(
+              'linear-gradient(to bottom, rgb(77, 17, 27), rgb(208, 79, 101))'
+            )
+          "
+        ></div>
+        <div
+          class="single-color purple"
+          (click)="
+            tasksSrv.changeSec2Color(
+              'linear-gradient(to bottom, rgb(60, 0, 77), rgb(170, 79, 208))'
+            )
+          "
+        ></div>
+        <div
+          class="single-color blue"
+          (click)="
+            tasksSrv.changeSec2Color(
+              'linear-gradient(to bottom, rgb(17, 40, 77), rgb(79, 150, 208))'
+            )
+          "
+        ></div>
+        <div
+          class="single-color teal"
+          (click)="
+            tasksSrv.changeSec2Color(
+              'linear-gradient(to bottom, rgb(0, 77, 64), rgb(77, 208, 180))'
+            )
+          "
+        ></div>
+        <div
+          class="single-color cyan"
+          (click)="
+            tasksSrv.changeSec2Color(
+              'linear-gradient(to bottom, rgb(0, 77, 92), rgb(79, 208, 231))'
+            )
+          "
+        ></div>
+        <div
+          class="single-color pink"
+          (click)="
+            tasksSrv.changeSec2Color(
+              'linear-gradient(to bottom, rgb(128, 20, 77), rgb(255, 128, 191))'
+            )
+          "
+        ></div>
+        <div
+          class="single-color black"
+          (click)="
+            tasksSrv.changeSec2Color(
+              'linear-gradient(to bottom, rgb(51, 51, 51), rgb(180, 180, 180))'
+            )
+          "
+        ></div>
+      </div>
+    </div>
+    }
+
+    <header class="header">
+      <div>My Todo Board</div>
+      <div class="add-section" (click)="tasksSrv.addSection()">
+        <img
+          [ngClass]="{ 'settings-spin': tasksSrv.newSection() }"
+          class="settings"
+          src="settings.png"
+          alt="settings"
+        />
+        <img
+          [ngClass]="{ 'add-spin': tasksSrv.newSection() }"
+          class="add"
+          src="add-white.png"
+          alt="add"
+        />
+        <span class="tooltip">Add New Section</span>
+      </div>
+    </header>
+
+    <div class="main-div">
+      <!-- Today component -->
+      @if(tasksSrv.todayExist && !tasksSrv.todayCollapsed()){
+      <app-today></app-today>
+      }@else{
+      <div
+        class="hidden-section"
+        (click)="tasksSrv.toggleTodayCollapsed()"
+        [ngStyle]="{ background: tasksSrv.secTodayColor }"
+      >
+        <button class="size zoom">
+          <img src="zoom.png" alt="zoom" />
+        </button>
+        <div class="title-text">{{ tasksSrv.todayTitle || "Today" }}</div>
+        <div class="tasks-num">{{ tasksSrv.todayTasks().length }}</div>
+      </div>
+      }
+
+      <!-- All added sections -> add-section component renders them -->
+      <app-add-section></app-add-section>
+    </div>
+  </div>
+</main>
+
+<!-- Undo -->
+@if (tasksSrv.showUndoMessage()) {
+<app-undo></app-undo>
+}
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<!-- @if(loader()){
 <div class="loader">
   <div class="spin-1"></div>
   <div class="spin-2"></div>
@@ -18,7 +169,7 @@
     </button>
 
     @if(changeColors()){
-    <!-- <div class="color-change">
+     <div class="color-change">
       
 
       <div class="colors">
@@ -33,7 +184,7 @@
         <div class="single-color pink"></div>
         <div class="single-color black"></div>
       </div>
-    </div> -->
+    </div> 
 
     <div class="color-change">
       <div class="colors">
@@ -90,7 +241,7 @@
           : '2px solid rgb(33, 29, 29)'
       }"
     >
-      <!--  -->
+        
       @if(!task.saved){
       <button
         class="circle"
@@ -99,7 +250,7 @@
           opacity: task.marked || task.hover ? '1' : '0'
         }"
       >
-        <!--  -->
+          
         @if(task.marked){
         <img class="mark" src="checkmark.png" alt="checkmark" />
         }
@@ -129,13 +280,13 @@
         <img src="delete.png" alt="delete-icon" />
       </button>
       }
-      <!--  -->
+        
       @if(task.hover && !task.saved){
       <button class="edit" (click)="editTask($index)">
         <img src="pen.png" alt="edit" />
       </button>
       }
-      <!--  -->
+        
       @if(task.saved){
       <button class="save" (click)="saveTask($index)">
         <img src="save.png" alt="save" />
@@ -144,15 +295,14 @@
     </div>
     }
   </section>
-
-  <!-- //////////////////////////////////////////////////////////////////////// -->
+ 
   <div class="lists" [ngStyle]="{ background: sec2Color }">
     <button class="paint" (click)="showColorsLista()">
       <img src="brush.png" alt="brush" />
     </button>
 
     @if(changeListsColor()){
-    <!-- <div class="color-change">
+     <div class="color-change">
       
 
       <div class="colors">
@@ -167,7 +317,7 @@
         <div class="single-color pink"></div>
         <div class="single-color black"></div>
       </div>
-    </div> -->
+    </div> 
 
     <div class="color-change">
       <div class="colors">
@@ -291,7 +441,7 @@
         </button>
 
         @if(changeTodayColor()){
-        <!-- <div class="color-change">
+         <div class="color-change">
         
   
         <div class="colors">
@@ -306,7 +456,7 @@
           <div class="single-color pink"></div>
           <div class="single-color black"></div>
         </div>
-      </div> -->
+      </div> 
 
         <div class="color-change">
           <div class="colors">
@@ -371,17 +521,17 @@
           </form>
           }
 
-          <!-- <div class="change-size"> -->
+           <div class="change-size"> 
           <button class="size hide" (click)="toggleTodayCollapsed()">
             <img src="hide.png" alt="hide" />
           </button>
-          <!-- </div> -->
+           </div> 
 
           <button class="delete-section" (click)="deleteTodaySection()">
             <img src="delete.png" alt="delete-section" />
           </button>
         </div>
-        <!-- //////////////////////////////////////////////////////////////////////////// -->
+
         @for(task of todayTasks; track $index){
         <div
           class="task-div"
@@ -395,7 +545,7 @@
               : '2px solid rgb(33, 29, 29)'
           }"
         >
-          <!--  -->
+            
           @if(!task.saved){
           <button
             class="circle"
@@ -404,7 +554,7 @@
               opacity: task.marked || task.hover ? '1' : '0'
             }"
           >
-            <!--  -->
+              
             @if(task.marked){
             <img class="mark" src="checkmark.png" alt="checkmark" />
             }
@@ -434,13 +584,13 @@
             <img src="delete.png" alt="delete-icon" />
           </button>
           }
-          <!--  -->
+            
           @if(task.hover && !task.saved){
           <button class="edit" (click)="editTaskToday($index)">
             <img src="pen.png" alt="edit" />
           </button>
           }
-          <!--  -->
+            
           @if(task.saved){
           <button class="save" (click)="saveTaskToday($index)">
             <img src="save.png" alt="save" />
@@ -463,9 +613,9 @@
       </div>
       }
 
-      <!-- //////////////////////////////////////////////////////////////////////////////// -->
+       //////////////////////////////////////////////////////////////////////////////// 
       @for(list of newSectionArray(); track $index; let sectionIndex = $index){
-      <!--  -->
+        
       @if(list.exist && !list.collapsed){
       <section
         class="sec-2"
@@ -483,7 +633,7 @@
         </button>
 
         @if(showSectionColors[sectionIndex]){
-        <!-- <div class="color-change">
+         <div class="color-change">
       
 
       <div class="colors">
@@ -498,7 +648,7 @@
         <div class="single-color pink"></div>
         <div class="single-color black"></div>
       </div>
-    </div> -->
+    </div> 
 
         <div class="color-change">
           <div class="colors">
@@ -566,7 +716,7 @@
           </form>
           }
 
-          <!--  -->
+            
           <button
             class="size hide"
             (click)="toggleSectionCollapsed(sectionIndex)"
@@ -592,7 +742,7 @@
               : '2px solid rgb(33, 29, 29)'
           }"
         >
-          <!--  -->
+            
           @if(!task.saved){
           <button
             class="circle"
@@ -601,7 +751,7 @@
               opacity: task.marked || task.hover ? '1' : '0'
             }"
           >
-            <!--  -->
+              
             @if(task.marked){
             <img class="mark" src="checkmark.png" alt="checkmark" />
             }
@@ -637,7 +787,7 @@
             <img src="delete.png" alt="delete-icon" />
           </button>
           }
-          <!--  -->
+            
           @if(task.hover && !task.saved){
           <button
             class="edit"
@@ -646,7 +796,7 @@
             <img src="pen.png" alt="edit" />
           </button>
           }
-          <!--  -->
+            
           @if(task.saved){
           <button
             class="save"
@@ -675,7 +825,6 @@
   </div>
 </main>
 
-<!-- //////////////////////////////////////////////////////////////////////// -->
 @if (showUndoMessage()) {
 <div class="undo">
   <img class="info" src="info.png" alt="info" />
@@ -688,4 +837,4 @@
   <p>Task Achieved</p>
   <button (click)="undoDelete()">UNDO</button>
 </div>
-}
+} -->

@@ -1,1 +1,11 @@
-<p>undo works!</p>
+<div class="undo">
+  <img class="info" src="info.png" alt="info" />
+  <img
+    class="close"
+    src="close-icon.png"
+    alt="close-icon"
+    (click)="tasksSrv.closeUndo()"
+  />
+  <p>Task Achieved</p>
+  <button (click)="tasksSrv.undoDelete()">UNDO</button>
+</div>

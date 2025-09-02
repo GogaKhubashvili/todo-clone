@@ -1,85 +1,93 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  signal,
-} from '@angular/core';
-import { Task } from '../shared/task-service';
+import { Component, Input } from '@angular/core';
+import { CommonModule, NgClass, NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Task, TaskService } from '../shared/task-service';
 
 @Component({
   selector: 'app-single-task',
   standalone: true,
-  imports: [FormsModule],
-  template: `
-    <div
-      class="task-div"
-      [draggable]="true"
-      (dragstart)="onDragStart.emit($event)"
-      (dblclick)="toggleEditing()"
-    >
-      <div class="circle" (click)="toggleMarked.emit()">
-        @if (task.isMarked) {
-        <img src="assets/mark.png" alt="mark" class="mark" />
-        }
-      </div>
-
-      <div class="task">
-        @if (!task.isEditing) {
-        <p [style.textDecoration]="task.isMarked ? 'line-through' : 'none'">
-          {{ task.title }}
-        </p>
-        } @else {
-        <input
-          type="text"
-          class="task-edit"
-          [(ngModel)]="editableTitle"
-          (blur)="saveChanges()"
-          (keyup.enter)="saveChanges()"
-          #editInput
-        />
-        }
-      </div>
-
-      @if (!task.isEditing) {
-      <button class="edit" (click)="toggleEditing()">
-        <img src="assets/edit.png" alt="edit" />
-      </button>
-      @if (task.isMarked) {
-      <button class="delete" (click)="onDelete.emit()">
-        <img src="assets/delete.png" alt="delete" />
-      </button>
-      } } @else {
-      <button class="save" (click)="saveChanges()">
-        <img src="assets/save.png" alt="save" />
-      </button>
-      }
-    </div>
-  `,
-  styleUrl: './single-task.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    FormsModule,
+    NgStyle,
+    // NgClass
+  ],
+  templateUrl: './single-task.html',
+  styleUrls: ['./single-task.scss'],
 })
 export class SingleTaskComponent {
-  @Input({ required: true }) task!: Task;
-  @Output() toggleMarked = new EventEmitter<void>();
-  @Output() onDragStart = new EventEmitter<DragEvent>();
-  @Output() onEdit = new EventEmitter<string>();
-  @Output() onDelete = new EventEmitter<void>();
+  @Input() task!: Task;
+  @Input() index!: string; // template passes index as interpolation
+  @Input() list!: string; // 'tasks' | 'todayTasks' | 'section'
+  @Input() sectionIndex?: number; // only set when list === 'section'
 
-  editableTitle = signal('');
+  constructor(public tasksSrv: TaskService) {}
 
-  ngOnInit() {
-    this.editableTitle.set(this.task.title);
+  get idx() {
+    return parseInt(this.index + '', 10);
   }
 
-  toggleEditing() {
-    this.task.isEditing = !this.task.isEditing;
+  onDragStart() {
+    if (
+      this.list === "'tasks'" ||
+      this.list === 'tasks' ||
+      this.list === '"tasks"'
+    ) {
+      this.tasksSrv.onDragStart(this.idx, 'tasks');
+    } else if (
+      this.list === "'todayTasks'" ||
+      this.list === 'todayTasks' ||
+      this.list === '"todayTasks"'
+    ) {
+      this.tasksSrv.onDragStart(this.idx, 'todayTasks');
+    } else {
+      // section
+      const si = this.sectionIndex ?? 0;
+      this.tasksSrv.onDragStartFromSection(this.idx, si);
+    }
   }
 
-  saveChanges() {
-    this.task.isEditing = false;
-    this.onEdit.emit(this.editableTitle());
+  // wrappers to call service methods depending on list
+  toggleMark() {
+    if (this.list.includes('tasks') && this.list.includes('today')) {
+      // should not happen
+    }
+    if (this.list.includes('tasks') && this.list === "'tasks'") {
+      this.tasksSrv.makeDeleteVisible(this.idx);
+    } else if (this.list.includes('today') || this.list === "'todayTasks'") {
+      this.tasksSrv.makeDeleteVisibleToday(this.idx);
+    } else if (this.list === "'section'" || this.list === 'section') {
+      this.tasksSrv.makeDeleteVisibleAddedSection(this.sectionIndex!, this.idx);
+    }
+  }
+
+  delete() {
+    if (this.list === "'tasks'" || this.list === 'tasks') {
+      this.tasksSrv.deleteTask(this.idx);
+    } else if (this.list === "'todayTasks'" || this.list === 'todayTasks') {
+      this.tasksSrv.deleteTaskToday(this.idx);
+    } else {
+      this.tasksSrv.deleteTaskFromSection(this.sectionIndex!, this.idx);
+    }
+  }
+
+  edit() {
+    if (this.list === "'tasks'" || this.list === 'tasks') {
+      this.tasksSrv.editTask(this.idx);
+    } else if (this.list === "'todayTasks'" || this.list === 'todayTasks') {
+      this.tasksSrv.editTaskToday(this.idx);
+    } else {
+      this.tasksSrv.editTaskFromSection(this.sectionIndex!, this.idx);
+    }
+  }
+
+  save() {
+    if (this.list === "'tasks'" || this.list === 'tasks') {
+      this.tasksSrv.saveTask(this.idx);
+    } else if (this.list === "'todayTasks'" || this.list === 'todayTasks') {
+      this.tasksSrv.saveTaskToday(this.idx);
+    } else {
+      this.tasksSrv.saveTaskFromSection(this.sectionIndex!, this.idx);
+    }
   }
 }

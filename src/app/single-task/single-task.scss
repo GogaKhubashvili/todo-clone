@@ -1,4 +1,3 @@
-/* Task styles from original file */
 .task-div {
   display: flex;
   align-items: center;
@@ -73,11 +72,6 @@
     overflow-wrap: break-word;
     hyphens: manual;
     position: relative;
-
-    p {
-      padding: 5px;
-      margin: 0;
-    }
 
     .task-edit {
       width: 108%;

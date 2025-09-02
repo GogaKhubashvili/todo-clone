@@ -1,16 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TaskService } from '../shared/task-service';
 
 @Component({
   selector: 'app-loader',
   standalone: true,
-  template: `
-    <div class="loader">
-      <div class="spin-1"></div>
-      <div class="spin-2"></div>
-      <div class="spin-3"></div>
-    </div>
-  `,
-  styleUrl: './loader.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule],
+  templateUrl: './loader.html',
+  styleUrls: ['./loader.scss'],
 })
-export class LoaderComponent {}
+export class LoaderComponent {
+  constructor(public tasksSrv: TaskService) {}
+}
