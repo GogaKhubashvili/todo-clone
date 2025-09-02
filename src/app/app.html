@@ -138,7 +138,18 @@
       }
 
       <!-- All added sections -> add-section component renders them -->
-      <app-add-section></app-add-section>
+      <!-- <div class="add-section-div">
+        <app-add-section></app-add-section>
+      </div> -->
+      <div class="add-section-div">
+        @for(list of tasksSrv.newSectionArray(); track $index; let sectionIndex
+        = $index){
+        <app-add-section
+          [list]="list"
+          [sectionIndex]="sectionIndex"
+        ></app-add-section>
+        }
+      </div>
     </div>
   </div>
 </main>

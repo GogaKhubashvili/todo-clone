@@ -1,8 +1,7 @@
-@for(list of tasksSrv.newSectionArray(); track $index; let sectionIndex =
-$index){ @if(list.exist && !list.collapsed){
+@if(list.exist && !list.collapsed){
 <section
   class="sec-2"
-  (dragover)="onDragOver($event)"
+  (dragover)="tasksSrv.onDragOver($event)"
   [ngStyle]="{ 'background-color': list.color }"
   (drop)="dropToSection($event, sectionIndex)"
 >
@@ -78,6 +77,7 @@ $index){ @if(list.exist && !list.collapsed){
       />
     </form>
     }
+
     <button
       class="size hide"
       (click)="tasksSrv.toggleSectionCollapsed(sectionIndex)"
@@ -93,23 +93,15 @@ $index){ @if(list.exist && !list.collapsed){
   </div>
 
   @for(task of list.tasks; track $index; let taskIndex = $index){
-  <app-single-task
-    [task]="task"
-    index="{{ $index }}"
-    [sectionIndex]="sectionIndex"
-    list="'section'"
-  ></app-single-task>
+  <div class="single-task">
+    <app-single-task
+      [task]="task"
+      [index]="taskIndex.toString()"
+      [sectionIndex]="sectionIndex"
+      list="'section'"
+    ></app-single-task>
+  </div>
   }
-
-  <!-- input for new task in section -->
-  <form class="title" (ngSubmit)="addTaskToSection(sectionIndex)">
-    <input
-      type="text"
-      name="task-input"
-      [(ngModel)]="tasksSrv.newSectionArray()[sectionIndex].newTask"
-    />
-    <button type="submit">Add</button>
-  </form>
 </section>
 }@else if(list.exist){
 <div
@@ -123,4 +115,4 @@ $index){ @if(list.exist && !list.collapsed){
   <div class="title-text">{{ list.title || "New Section" }}</div>
   <div class="tasks-num">{{ list.tasks.length }}</div>
 </div>
-} }
+}

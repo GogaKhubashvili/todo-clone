@@ -14,736 +14,736 @@ body {
   background: radial-gradient(rgb(29, 27, 27), rgb(21, 20, 20));
 }
 
-// // Main container
-// main {
-//   display: flex;
-//   width: 100%;
-//   height: 100%;
-//   gap: 10px;
-//   padding: 20px;
-
-//   // Left section (main tasks)
-//   .sec-1 {
-//     width: 300px;
-//     position: relative;
-//     padding-bottom: 10px;
-//   }
-
-//   // Common section styles
-//   section {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     background-color: rgb(19, 17, 60);
-//     border-radius: 10px;
-//     border: 2px solid black;
-//     gap: 10px;
-//     transition: all 0.2s ease-in-out;
-//     overflow-y: auto;
-
-//     .paint {
-//       position: absolute;
-//       bottom: 5px;
-//       right: 5px;
-//       padding: 5px;
-//       border: none;
-//       border-radius: 100px;
-//       background-color: transparent;
-//       cursor: pointer;
-//       width: 30px;
-//       height: 30px;
-//       transition: all 0.15s ease-in-out;
-//       background-color: #282e3385;
-//       z-index: 101;
-
-//       &:hover {
-//         background-color: #282e33;
-//       }
-
-//       img {
-//         width: 100%;
-//       }
-//     }
-
-//     .color-change {
-//       position: absolute;
-//       // background-color: #50575f;
-//       // width: 220px;
-//       // height: 150px;
-//       // top: 0;
-//       bottom: 1px;
-//       // left: 0;
-//       right: 40px;
-//       // border: 1px solid tomato;
-//       margin: auto;
-//       border-radius: 5px;
-
-//       z-index: 99;
-
-//       display: flex;
-//       align-items: center;
-//       justify-content: center;
-//       flex-direction: column;
-//       gap: 10px;
-
-//       .colors {
-//         // display: grid;
-//         // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-//         // align-items: center;
-//         // justify-content: center;
-//         width: 200px;
-//         height: 70px;
-//         gap: 10px;
-//         position: relative;
-//         // background-color: #282e33;
-
-//         .single-color {
-//           position: absolute;
-//           // top: 0;
-//           // left: 0;
-//           cursor: pointer;
-//           width: 30px;
-//           height: 30px;
-//           // background-color: tomato;
-//           // border: 1px solid black;
-//           outline: 2px solid white;
-//           border-radius: 100px;
-//           transition: all 0.15s ease-in-out;
-//           animation: colorVisible 0.15s ease-in-out forwards;
-//           transform: scale(0);
-
-//           &:hover {
-//             outline: 2px solid rgb(152, 238, 90);
-//           }
-//         }
-
-//         .green {
-//           background-color: rgb(4, 174, 103);
-//           bottom: 45px;
-//           right: 165px;
-//           animation-delay: 0.2s;
-//         }
-
-//         .yellow {
-//           background-color: rgb(195, 189, 17);
-//           bottom: 5px;
-//           right: 5px;
-//         }
-
-//         .orange {
-//           background-color: rgb(201, 129, 6);
-//           right: 45px;
-//           bottom: 5px;
-//           animation-delay: 0.05s;
-//         }
-
-//         .red {
-//           background-color: rgb(148, 17, 7);
-//           bottom: 5px;
-//           right: 165px;
-//           animation-delay: 0.2s;
-//         }
-
-//         .purple {
-//           background-color: rgb(49, 5, 72);
-//           right: 5px;
-//           bottom: 45px;
-//         }
-
-//         .blue {
-//           background-color: rgb(19, 17, 60);
-//           right: 45px;
-//           bottom: 45px;
-//           animation-delay: 0.05s;
-//         }
-
-//         .teal {
-//           background-color: teal;
-//           bottom: 5px;
-//           right: 85px;
-//           animation-delay: 0.1s;
-//         }
-
-//         .cyan {
-//           background-color: cyan;
-//           bottom: 45px;
-//           right: 85px;
-//           animation-delay: 0.1s;
-//         }
-
-//         .pink {
-//           background-color: rgb(226, 159, 170);
-//           right: 125px;
-//           bottom: 45px;
-//           animation-delay: 0.15s;
-//         }
-
-//         .black {
-//           background-color: gray;
-//           bottom: 5px;
-//           right: 125px;
-//           animation-delay: 0.15s;
-//         }
-//       }
-//     }
-
-//     // Hide scrollbar
-//     &::-webkit-scrollbar {
-//       width: 0;
-//     }
-
-//     // Section title/form
-//     .title {
-//       background-color: rgba(0, 0, 0, 0.4);
-//       border-bottom: 2px solid black;
-//       width: 100%;
-//       height: 50px;
-//       display: flex;
-//       align-items: center;
-//       padding: 10px 3px;
-//       gap: 2px;
-//       // justify-content: center;
-//       // border-top-right-radius: 10px;
-//       // background-color: #ff4444;
-
-//       input {
-//         flex: 1;
-//         // width: 75%;
-//         height: 30px;
-//         padding: 5px;
-//         background-color: rgb(33, 29, 29);
-//         border: 2px solid black;
-//         border-radius: 5px;
-//         outline: none;
-//         // background-color: #ff4444;
-//       }
-
-//       button {
-//         min-width: 63px;
-//         cursor: pointer;
-//         border: 2px solid black;
-//         border-radius: 5px;
-//         background-color: rgb(33, 29, 29);
-//         padding: 5px 0;
-//         transition: all 0.15s ease-in-out;
-
-//         &:hover {
-//           background-color: white;
-//           color: black;
-//         }
-//       }
-//     }
-
-//     // Section header (for custom sections)
-//     .section-header {
-//       background-color: rgba(0, 0, 0, 0.4);
-//       border-bottom: 2px solid black;
-//       width: 100%;
-//       height: 50px;
-//       display: flex;
-//       align-items: center;
-//       justify-content: space-between;
-//       padding: 10px;
-//       border-top-right-radius: 5px;
-//       border-top-left-radius: 5px;
-
-//       .title {
-//         background: none;
-//         border: none;
-//         width: auto;
-//         height: auto;
-//         padding: 0;
-//         flex: 1;
-//       }
-
-//       .size {
-//         margin-right: 3px;
-
-//         img {
-//           transform: rotateZ(45deg);
-//         }
-//       }
-
-//       .delete-section,
-//       .hide,
-//       .zoom {
-//         cursor: pointer;
-//         border: 2px solid black;
-//         border-radius: 5px;
-//         background-color: rgb(33, 29, 29);
-//         padding: 5px;
-//         transition: all 0.15s ease-in-out;
-//         width: 30px;
-//         height: 30px;
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-
-//         &:hover {
-//           background-color: #ff4444;
-//           border-color: #ff4444;
-//         }
-
-//         img {
-//           width: 16px;
-//           height: 16px;
-//         }
-//       }
-//     }
-
-//     // Task items
-//     .task-div {
-//       display: flex;
-//       align-items: center;
-//       min-height: 34px;
-//       gap: 10px;
-//       cursor: grab;
-//       position: relative;
-//       padding: 0 10px;
-//       background-color: rgb(33, 29, 29);
-//       width: 90%;
-//       border-radius: 5px;
-//       box-shadow: 2px 2px rgba(255, 255, 255, 0.556);
-//       transition: all 0.15s ease-in-out;
-
-//       &:active {
-//         cursor: grabbing;
-//       }
-
-//       // Action buttons (delete, edit, save)
-//       .delete,
-//       .edit,
-//       .save {
-//         position: absolute;
-//         right: 2px;
-//         border: none;
-//         padding: 3px;
-//         background-color: transparent;
-//         cursor: pointer;
-//         border-radius: 100px;
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-
-//         &:hover {
-//           background-color: rgb(54, 48, 48);
-//         }
-
-//         img {
-//           width: 20px;
-//           border-radius: 100px;
-//         }
-//       }
-
-//       .delete {
-//         right: 30px;
-//       }
-
-//       // Circle checkbox
-//       .circle {
-//         cursor: pointer;
-//         position: absolute;
-//         width: 15px;
-//         height: 15px;
-//         background-color: transparent;
-//         left: 10px;
-//         border-radius: 100px;
-//         border: 1px solid white;
-//         transition: all 0.2s ease-in-out;
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//         z-index: 10;
-
-//         .mark {
-//           width: 11px;
-//         }
-//       }
-
-//       // Task content
-//       .task {
-//         max-width: 85%;
-//         height: 100%;
-//         transition: all 0.15s ease-in-out;
-//         word-wrap: break-word;
-//         overflow-wrap: break-word;
-//         hyphens: manual;
-//         position: relative;
-
-//         .task-edit {
-//           width: 108%;
-//           height: 100%;
-//           border: none;
-//           background-color: rgb(60, 55, 55);
-//           outline: none;
-//           border-radius: 3px;
-//           padding: 5px 8px;
-//         }
-//       }
-//     }
-//   }
-
-//   // Right section (lists container)
-//   .lists {
-//     border: 2px solid black;
-//     border-radius: 10px;
-//     flex: 1;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: start;
-//     gap: 10px;
-//     overflow-y: hidden;
-//     position: relative;
-//     // background: linear-gradient(to bottom, rgb(77, 17, 27), rgb(208, 79, 101));
-//     transition: all 0.2s ease-in-out;
-
-//     .paint {
-//       position: absolute;
-//       bottom: 5px;
-//       right: 5px;
-//       padding: 5px;
-//       border: none;
-//       border-radius: 100px;
-//       background-color: transparent;
-//       cursor: pointer;
-//       width: 30px;
-//       height: 30px;
-//       transition: all 0.15s ease-in-out;
-//       background-color: #282e3385;
-//       z-index: 101;
-
-//       &:hover {
-//         background-color: #282e33;
-//       }
-
-//       img {
-//         width: 100%;
-//       }
-//     }
-
-//     .color-change {
-//       position: absolute;
-//       // background-color: #50575f;
-//       // width: 220px;
-//       // height: 150px;
-//       // top: 0;
-//       bottom: 1px;
-//       // left: 0;
-//       right: 40px;
-//       // border: 1px solid tomato;
-//       margin: auto;
-//       border-radius: 5px;
-
-//       z-index: 99;
-
-//       display: flex;
-//       align-items: center;
-//       justify-content: center;
-//       flex-direction: column;
-//       gap: 10px;
-
-//       .colors {
-//         // display: grid;
-//         // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-//         // align-items: center;
-//         // justify-content: center;
-//         width: 200px;
-//         height: 70px;
-//         gap: 10px;
-//         position: relative;
-//         // background-color: #282e33;
-
-//         .single-color {
-//           position: absolute;
-//           // top: 0;
-//           // left: 0;
-//           cursor: pointer;
-//           width: 30px;
-//           height: 30px;
-//           // background-color: tomato;
-//           // border: 1px solid black;
-//           outline: 2px solid white;
-//           border-radius: 100px;
-//           transition: all 0.15s ease-in-out;
-//           animation: colorVisible 0.15s ease-in-out forwards;
-//           transform: scale(0);
-
-//           &:hover {
-//             outline: 2px solid rgb(152, 238, 90);
-//           }
-//         }
-
-//         .green {
-//           background-color: rgb(4, 174, 103);
-//           bottom: 45px;
-//           right: 165px;
-//           animation-delay: 0.2s;
-//         }
-
-//         .yellow {
-//           background-color: rgb(195, 189, 17);
-//           bottom: 5px;
-//           right: 5px;
-//         }
-
-//         .orange {
-//           background-color: rgb(201, 129, 6);
-//           right: 45px;
-//           bottom: 5px;
-//           animation-delay: 0.05s;
-//         }
-
-//         .red {
-//           background-color: rgb(148, 17, 7);
-//           bottom: 5px;
-//           right: 165px;
-//           animation-delay: 0.2s;
-//         }
-
-//         .purple {
-//           background-color: rgb(49, 5, 72);
-//           right: 5px;
-//           bottom: 45px;
-//         }
-
-//         .blue {
-//           background-color: rgb(19, 17, 60);
-//           right: 45px;
-//           bottom: 45px;
-//           animation-delay: 0.05s;
-//         }
-
-//         .teal {
-//           background-color: teal;
-//           bottom: 5px;
-//           right: 85px;
-//           animation-delay: 0.1s;
-//         }
-
-//         .cyan {
-//           background-color: cyan;
-//           bottom: 45px;
-//           right: 85px;
-//           animation-delay: 0.1s;
-//         }
-
-//         .pink {
-//           background-color: rgb(226, 159, 170);
-//           right: 125px;
-//           bottom: 45px;
-//           animation-delay: 0.15s;
-//         }
-
-//         .black {
-//           background-color: gray;
-//           bottom: 5px;
-//           right: 125px;
-//           animation-delay: 0.15s;
-//         }
-//       }
-//     }
-
-//     // Hide scrollbar
-//     &::-webkit-scrollbar {
-//       width: 0;
-//     }
-
-//     .hidden-section {
-//       cursor: pointer;
-//       width: 50px;
-//       // height: 120px;
-//       gap: 0px;
-//       // padding: 10px 0;
-//       height: auto;
-//       min-height: 170px;
-//       background-color: rgb(19, 17, 60);
-//       display: flex;
-//       flex-direction: column;
-//       align-items: center;
-//       justify-content: space-around;
-//       border-radius: 10px;
-//       border: 2px solid black;
-//       transition: all 0.15s ease-in-out;
-
-//       &:hover {
-//         background-color: rgb(39, 36, 101);
-//       }
-
-//       .title-text,
-//       .tasks-num {
-//         transform: rotateZ(90deg);
-//         font-weight: bold;
-//         // background-color: #ff4444;
-//       }
-
-//       .zoom {
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//         border: none;
-//         background-color: transparent;
-//         cursor: pointer;
-
-//         img {
-//           width: 20px;
-//           transform: rotateZ(45deg);
-//         }
-//       }
-//     }
-
-//     // Header
-//     .header {
-//       width: 100%;
-//       padding: 5px 10px;
-//       background-color: rgba(0, 0, 0, 0.4);
-//       font-size: 30px;
-//       font-weight: bold;
-//       display: flex;
-//       align-items: center;
-//       justify-content: space-between;
-//       height: 55px;
-//       border-bottom: 2px solid black;
-//       color: white;
-
-//       // Add section button
-//       .add-section {
-//         position: relative;
-//         width: 82px;
-//         height: 32px;
-//         border-radius: 100px;
-//         cursor: pointer;
-//         overflow: hidden;
-//         transition: all 0.15s ease-in-out;
-
-//         &:hover {
-//           background-color: #282e33;
-
-//           .add {
-//             background-color: #282e33;
-//           }
-//         }
-
-//         img {
-//           position: absolute;
-//         }
-
-//         .settings {
-//           width: 32px;
-//         }
-
-//         .add {
-//           width: 16px;
-//           top: 0;
-//           bottom: 0;
-//           left: 8px;
-//           margin: auto;
-//           background-color: black;
-//           border-radius: 100%;
-//           transition: all 0.15s ease-in-out;
-//         }
-
-//         .settings-spin {
-//           animation: spinSettings 1s ease-in-out;
-//         }
-
-//         .add-spin {
-//           animation: spinAdd 1s ease-in-out;
-//         }
-
-//         .tooltip {
-//           position: absolute;
-//           font-size: 10px;
-//           bottom: 0px;
-//           top: 0;
-//           left: 30px;
-//           right: 0px;
-//           padding: 5px;
-//           border-radius: 10px;
-//           text-align: center;
-//         }
-//       }
-//     }
-
-//     // Main content area
-//     .main-div {
-//       height: 100%;
-//       width: 100%;
-//       display: flex;
-//       align-items: flex-start;
-//       gap: 10px;
-//       overflow-x: scroll;
-//       padding: 0 10px;
-
-//       // Custom scrollbar
-//       &::-webkit-scrollbar {
-//         background-color: transparent;
-//       }
-
-//       &::-webkit-scrollbar-thumb {
-//         background-color: #282e33c7;
-//         border-radius: 100px;
-//       }
-
-//       // Section containers
-//       .sec-2 {
-//         min-width: 250px;
-//         max-width: 300px;
-//         min-height: 110px;
-//         height: auto;
-//         align-self: flex-start;
-//         flex: 0 0 auto;
-//         padding-bottom: 10px;
-//         // background-color: antiquewhite;
-//         // width: 50px;
-//         padding-bottom: 50px;
-//         position: relative;
-//         overflow: visible;
-
-//         .title-form {
-//           input {
-//             width: 97%;
-//           }
-//         }
-//       }
-//     }
-
-//     // Custom scrollbar for lists container
-//     &::-webkit-scrollbar {
-//       background-color: transparent;
-//     }
-
-//     &::-webkit-scrollbar-thumb {
-//       background-color: #282e33c7;
-//       border-radius: 100px;
-//       display: none;
-//     }
-//   }
-// }
-
-// // Responsive design
-// @media (max-width: 700px) {
-//   main {
-//     flex-direction: column;
-
-//     .sec-1 {
-//       width: 100%;
-//       height: 300px;
-//       min-height: 200px;
-//     }
-
-//     .lists {
-//       min-height: 200px;
-//     }
-//   }
-// }
-
-// // Animations
-// @keyframes colorVisible {
-//   0% {
-//     transform: scale(0);
-//   }
-
-//   100% {
-//     transform: scale(1);
-//   }
-// }
+// Main container
+main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 10px;
+  padding: 20px;
+
+  // Left section (main tasks)
+  .sec-1 {
+    width: 300px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  // Common section styles
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(19, 17, 60);
+    border-radius: 10px;
+    border: 2px solid black;
+    gap: 10px;
+    transition: all 0.2s ease-in-out;
+    overflow-y: auto;
+
+    .paint {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      padding: 5px;
+      border: none;
+      border-radius: 100px;
+      background-color: transparent;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      transition: all 0.15s ease-in-out;
+      background-color: #282e3385;
+      z-index: 101;
+
+      &:hover {
+        background-color: #282e33;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .color-change {
+      position: absolute;
+      // background-color: #50575f;
+      // width: 220px;
+      // height: 150px;
+      // top: 0;
+      bottom: 1px;
+      // left: 0;
+      right: 40px;
+      // border: 1px solid tomato;
+      margin: auto;
+      border-radius: 5px;
+
+      z-index: 99;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+
+      .colors {
+        // display: grid;
+        // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        // align-items: center;
+        // justify-content: center;
+        width: 200px;
+        height: 70px;
+        gap: 10px;
+        position: relative;
+        // background-color: #282e33;
+
+        .single-color {
+          position: absolute;
+          // top: 0;
+          // left: 0;
+          cursor: pointer;
+          width: 30px;
+          height: 30px;
+          // background-color: tomato;
+          // border: 1px solid black;
+          outline: 2px solid white;
+          border-radius: 100px;
+          transition: all 0.15s ease-in-out;
+          animation: colorVisible 0.15s ease-in-out forwards;
+          transform: scale(0);
+
+          &:hover {
+            outline: 2px solid rgb(152, 238, 90);
+          }
+        }
+
+        .green {
+          background-color: rgb(4, 174, 103);
+          bottom: 45px;
+          right: 165px;
+          animation-delay: 0.2s;
+        }
+
+        .yellow {
+          background-color: rgb(195, 189, 17);
+          bottom: 5px;
+          right: 5px;
+        }
+
+        .orange {
+          background-color: rgb(201, 129, 6);
+          right: 45px;
+          bottom: 5px;
+          animation-delay: 0.05s;
+        }
+
+        .red {
+          background-color: rgb(148, 17, 7);
+          bottom: 5px;
+          right: 165px;
+          animation-delay: 0.2s;
+        }
+
+        .purple {
+          background-color: rgb(49, 5, 72);
+          right: 5px;
+          bottom: 45px;
+        }
+
+        .blue {
+          background-color: rgb(19, 17, 60);
+          right: 45px;
+          bottom: 45px;
+          animation-delay: 0.05s;
+        }
+
+        .teal {
+          background-color: teal;
+          bottom: 5px;
+          right: 85px;
+          animation-delay: 0.1s;
+        }
+
+        .cyan {
+          background-color: cyan;
+          bottom: 45px;
+          right: 85px;
+          animation-delay: 0.1s;
+        }
+
+        .pink {
+          background-color: rgb(226, 159, 170);
+          right: 125px;
+          bottom: 45px;
+          animation-delay: 0.15s;
+        }
+
+        .black {
+          background-color: gray;
+          bottom: 5px;
+          right: 125px;
+          animation-delay: 0.15s;
+        }
+      }
+    }
+
+    // Hide scrollbar
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
+    // Section title/form
+    .title {
+      background-color: rgba(0, 0, 0, 0.4);
+      border-bottom: 2px solid black;
+      width: 100%;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      padding: 10px 3px;
+      gap: 2px;
+      // justify-content: center;
+      // border-top-right-radius: 10px;
+      // background-color: #ff4444;
+
+      input {
+        flex: 1;
+        // width: 75%;
+        height: 30px;
+        padding: 5px;
+        background-color: rgb(33, 29, 29);
+        border: 2px solid black;
+        border-radius: 5px;
+        outline: none;
+        // background-color: #ff4444;
+      }
+
+      button {
+        min-width: 63px;
+        cursor: pointer;
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: rgb(33, 29, 29);
+        padding: 5px 0;
+        transition: all 0.15s ease-in-out;
+
+        &:hover {
+          background-color: white;
+          color: black;
+        }
+      }
+    }
+
+    // Section header (for custom sections)
+    .section-header {
+      background-color: rgba(0, 0, 0, 0.4);
+      border-bottom: 2px solid black;
+      width: 100%;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+
+      .title {
+        background: none;
+        border: none;
+        width: auto;
+        height: auto;
+        padding: 0;
+        flex: 1;
+      }
+
+      .size {
+        margin-right: 3px;
+
+        img {
+          transform: rotateZ(45deg);
+        }
+      }
+
+      .delete-section,
+      .hide,
+      .zoom {
+        cursor: pointer;
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: rgb(33, 29, 29);
+        padding: 5px;
+        transition: all 0.15s ease-in-out;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background-color: #ff4444;
+          border-color: #ff4444;
+        }
+
+        img {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+
+    // Task items
+    .task-div {
+      display: flex;
+      align-items: center;
+      min-height: 34px;
+      gap: 10px;
+      cursor: grab;
+      position: relative;
+      padding: 0 10px;
+      background-color: rgb(33, 29, 29);
+      width: 90%;
+      border-radius: 5px;
+      box-shadow: 2px 2px rgba(255, 255, 255, 0.556);
+      transition: all 0.15s ease-in-out;
+
+      &:active {
+        cursor: grabbing;
+      }
+
+      // Action buttons (delete, edit, save)
+      .delete,
+      .edit,
+      .save {
+        position: absolute;
+        right: 2px;
+        border: none;
+        padding: 3px;
+        background-color: transparent;
+        cursor: pointer;
+        border-radius: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background-color: rgb(54, 48, 48);
+        }
+
+        img {
+          width: 20px;
+          border-radius: 100px;
+        }
+      }
+
+      .delete {
+        right: 30px;
+      }
+
+      // Circle checkbox
+      .circle {
+        cursor: pointer;
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background-color: transparent;
+        left: 10px;
+        border-radius: 100px;
+        border: 1px solid white;
+        transition: all 0.2s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+
+        .mark {
+          width: 11px;
+        }
+      }
+
+      // Task content
+      .task {
+        max-width: 85%;
+        height: 100%;
+        transition: all 0.15s ease-in-out;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: manual;
+        position: relative;
+
+        .task-edit {
+          width: 108%;
+          height: 100%;
+          border: none;
+          background-color: rgb(60, 55, 55);
+          outline: none;
+          border-radius: 3px;
+          padding: 5px 8px;
+        }
+      }
+    }
+  }
+
+  // Right section (lists container)
+  .lists {
+    border: 2px solid black;
+    border-radius: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    overflow-y: hidden;
+    position: relative;
+    // background: linear-gradient(to bottom, rgb(77, 17, 27), rgb(208, 79, 101));
+    transition: all 0.2s ease-in-out;
+
+    .paint {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      padding: 5px;
+      border: none;
+      border-radius: 100px;
+      background-color: transparent;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      transition: all 0.15s ease-in-out;
+      background-color: #282e3385;
+      z-index: 101;
+
+      &:hover {
+        background-color: #282e33;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .color-change {
+      position: absolute;
+      // background-color: #50575f;
+      // width: 220px;
+      // height: 150px;
+      // top: 0;
+      bottom: 1px;
+      // left: 0;
+      right: 40px;
+      // border: 1px solid tomato;
+      margin: auto;
+      border-radius: 5px;
+
+      z-index: 99;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+
+      .colors {
+        // display: grid;
+        // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        // align-items: center;
+        // justify-content: center;
+        width: 200px;
+        height: 70px;
+        gap: 10px;
+        position: relative;
+        // background-color: #282e33;
+
+        .single-color {
+          position: absolute;
+          // top: 0;
+          // left: 0;
+          cursor: pointer;
+          width: 30px;
+          height: 30px;
+          // background-color: tomato;
+          // border: 1px solid black;
+          outline: 2px solid white;
+          border-radius: 100px;
+          transition: all 0.15s ease-in-out;
+          animation: colorVisible 0.15s ease-in-out forwards;
+          transform: scale(0);
+
+          &:hover {
+            outline: 2px solid rgb(152, 238, 90);
+          }
+        }
+
+        .green {
+          background-color: rgb(4, 174, 103);
+          bottom: 45px;
+          right: 165px;
+          animation-delay: 0.2s;
+        }
+
+        .yellow {
+          background-color: rgb(195, 189, 17);
+          bottom: 5px;
+          right: 5px;
+        }
+
+        .orange {
+          background-color: rgb(201, 129, 6);
+          right: 45px;
+          bottom: 5px;
+          animation-delay: 0.05s;
+        }
+
+        .red {
+          background-color: rgb(148, 17, 7);
+          bottom: 5px;
+          right: 165px;
+          animation-delay: 0.2s;
+        }
+
+        .purple {
+          background-color: rgb(49, 5, 72);
+          right: 5px;
+          bottom: 45px;
+        }
+
+        .blue {
+          background-color: rgb(19, 17, 60);
+          right: 45px;
+          bottom: 45px;
+          animation-delay: 0.05s;
+        }
+
+        .teal {
+          background-color: teal;
+          bottom: 5px;
+          right: 85px;
+          animation-delay: 0.1s;
+        }
+
+        .cyan {
+          background-color: cyan;
+          bottom: 45px;
+          right: 85px;
+          animation-delay: 0.1s;
+        }
+
+        .pink {
+          background-color: rgb(226, 159, 170);
+          right: 125px;
+          bottom: 45px;
+          animation-delay: 0.15s;
+        }
+
+        .black {
+          background-color: gray;
+          bottom: 5px;
+          right: 125px;
+          animation-delay: 0.15s;
+        }
+      }
+    }
+
+    // Hide scrollbar
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
+    .hidden-section {
+      cursor: pointer;
+      width: 50px;
+      // height: 120px;
+      gap: 0px;
+      // padding: 10px 0;
+      height: auto;
+      min-height: 170px;
+      background-color: rgb(19, 17, 60);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      border-radius: 10px;
+      border: 2px solid black;
+      transition: all 0.15s ease-in-out;
+
+      &:hover {
+        background-color: rgb(39, 36, 101);
+      }
+
+      .title-text,
+      .tasks-num {
+        transform: rotateZ(90deg);
+        font-weight: bold;
+        // background-color: #ff4444;
+      }
+
+      .zoom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+
+        img {
+          width: 20px;
+          transform: rotateZ(45deg);
+        }
+      }
+    }
+
+    // Header
+    .header {
+      width: 100%;
+      padding: 5px 10px;
+      background-color: rgba(0, 0, 0, 0.4);
+      font-size: 30px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 55px;
+      border-bottom: 2px solid black;
+      color: white;
+
+      // Add section button
+      .add-section {
+        position: relative;
+        width: 82px;
+        height: 32px;
+        border-radius: 100px;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all 0.15s ease-in-out;
+
+        &:hover {
+          background-color: #282e33;
+
+          .add {
+            background-color: #282e33;
+          }
+        }
+
+        img {
+          position: absolute;
+        }
+
+        .settings {
+          width: 32px;
+        }
+
+        .add {
+          width: 16px;
+          top: 0;
+          bottom: 0;
+          left: 8px;
+          margin: auto;
+          background-color: black;
+          border-radius: 100%;
+          transition: all 0.15s ease-in-out;
+        }
+
+        .settings-spin {
+          animation: spinSettings 1s ease-in-out;
+        }
+
+        .add-spin {
+          animation: spinAdd 1s ease-in-out;
+        }
+
+        .tooltip {
+          position: absolute;
+          font-size: 10px;
+          bottom: 0px;
+          top: 0;
+          left: 30px;
+          right: 0px;
+          padding: 5px;
+          border-radius: 10px;
+          text-align: center;
+        }
+      }
+    }
+
+    // Main content area
+    .main-div {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      overflow-x: scroll;
+      padding: 0 10px;
+
+      // Custom scrollbar
+      &::-webkit-scrollbar {
+        background-color: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #282e33c7;
+        border-radius: 100px;
+      }
+
+      // Section containers
+      .sec-2 {
+        min-width: 250px;
+        max-width: 300px;
+        min-height: 110px;
+        height: auto;
+        align-self: flex-start;
+        flex: 0 0 auto;
+        padding-bottom: 10px;
+        // background-color: antiquewhite;
+        // width: 50px;
+        padding-bottom: 50px;
+        position: relative;
+        overflow: visible;
+
+        .title-form {
+          input {
+            width: 97%;
+          }
+        }
+      }
+    }
+
+    // Custom scrollbar for lists container
+    &::-webkit-scrollbar {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #282e33c7;
+      border-radius: 100px;
+      display: none;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 700px) {
+  main {
+    flex-direction: column;
+
+    .sec-1 {
+      width: 100%;
+      height: 300px;
+      min-height: 200px;
+    }
+
+    .lists {
+      min-height: 200px;
+    }
+  }
+}
+
+// Animations
+@keyframes colorVisible {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

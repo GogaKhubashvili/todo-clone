@@ -1,6 +1,12 @@
 /* Reuse section styles */
 .sec-2 {
   position: relative;
+  // display: flex;
+  // flex-direction: row;
+
+  .single-task {
+    width: 90%;
+  }
 
   .title-form {
     input {
@@ -13,7 +19,7 @@
 .paint {
   position: absolute;
   right: 5px;
-  top: 5px;
+  bottom: 5px;
   cursor: pointer;
 
   img {
@@ -24,10 +30,10 @@
 .color-change {
   position: absolute;
   right: -50px;
-  top: 0;
-  background-color: #282e33;
+  bottom: 100;
+  // background-color: #282e33;
   padding: 5px;
-  border: 1px solid black;
+  // border: 1px solid black;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -40,5 +46,5 @@
   height: 20px;
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid black;
+  // border: 2px solid black;
 }

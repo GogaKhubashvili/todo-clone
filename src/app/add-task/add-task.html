@@ -61,10 +61,12 @@
   </form>
 
   @for(task of tasksSrv.tasks(); track $index){
-  <app-single-task
-    [task]="task"
-    index="{{ $index }}"
-    list="'tasks'"
-  ></app-single-task>
+  <div class="single-task">
+    <app-single-task
+      [task]="task"
+      index="{{ $index }}"
+      list="'tasks'"
+    ></app-single-task>
+  </div>
   }
 </section>

@@ -5,6 +5,13 @@ main {
   gap: 10px;
   padding: 20px;
 
+  .add-section-div {
+    // background-color: aliceblue;
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+  }
+
   .sec-1 {
     width: 300px;
     position: relative;

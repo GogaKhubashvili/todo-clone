@@ -85,10 +85,12 @@
   </div>
 
   @for(task of tasksSrv.todayTasks(); track $index){
-  <app-single-task
-    [task]="task"
-    index="{{ $index }}"
-    list="'todayTasks'"
-  ></app-single-task>
+  <div class="single-task">
+    <app-single-task
+      [task]="task"
+      index="{{ $index }}"
+      list="'todayTasks'"
+    ></app-single-task>
+  </div>
   }
 </section>
